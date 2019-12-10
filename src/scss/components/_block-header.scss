@@ -1,0 +1,177 @@
+/*
+// .block-header
+*/
+@import '../variables';
+@import '../functions';
+@import '../mixins/direction';
+
+
+.block-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 18px;
+}
+.block-header__title {
+    margin-bottom: 0;
+    font-size: 20px;
+}
+.block-header__divider {
+    flex-grow: 1;
+    height: $block-header-divider-size;
+    background: $block-header-divider-color;
+}
+.block-header__groups-list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    font-weight: $font-weight-medium;
+    white-space: nowrap;
+
+    li + li {
+        @include direction {
+            #{$margin-inline-start}: 3px;
+        }
+    }
+}
+.block-header__group {
+    background: transparent;
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    cursor: pointer;
+    display: block;
+    color: inherit;
+    padding: 2px 11px 1px;
+    border-radius: 12px;
+    box-shadow: $block-header-filter-default-shadow;
+
+    &:focus {
+        outline: none;
+    }
+    &:focus,
+    &:hover {
+        box-shadow: $block-header-filter-hover-shadow;
+        color: inherit;
+    }
+}
+.block-header__group--active {
+    &,
+    &:focus,
+    &:hover {
+        cursor: default;
+        box-shadow: $block-header-filter-active-shadow;
+    }
+}
+.block-header__arrows-list {
+    display: flex;
+}
+.block-header__arrow {
+    width: 27px;
+    height: 29px;
+    padding: 0;
+    margin: 0;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    fill: $block-header-arrow-default-color;
+    border-radius: 1.5px;
+    background: $block-header-arrow-default-bg;
+    transition: all .15s;
+
+    &:focus {
+        outline: none;
+    }
+
+    &:focus,
+    &:hover {
+        background: $block-header-arrow-hover-bg;
+        fill: $block-header-arrow-hover-color;
+    }
+
+    &:active {
+        transition-duration: 0s;
+        background: $block-header-arrow-active-bg;
+        fill: $block-header-arrow-active-color;
+    }
+
+    & + & {
+        @include direction {
+            #{$margin-inline-start}: 3px;
+        }
+    }
+
+    svg {
+        @include direction {
+            transform: scaleX(1 * $transform-direction);
+        }
+    }
+}
+.block-header__arrow--left svg {
+    position: relative;
+
+    @include direction {
+        #{$inset-inline-start}: -1px;
+    }
+}
+.block-header__arrow--right svg {
+    position: relative;
+
+    @include direction {
+        #{$inset-inline-start}: 1px;
+    }
+}
+
+
+.block-header__title + .block-header__divider {
+    @include direction {
+        #{$margin-inline-start}: 16px;
+    }
+}
+.block-header__divider + .block-header__groups-list {
+    @include direction {
+        #{$margin-inline-start}: 12px;
+    }
+}
+.block-header__groups-list + .block-header__arrows-list {
+    @include direction {
+        #{$margin-inline-start}: 10px;
+    }
+}
+.block-header__divider + .block-header__arrows-list {
+    @include direction {
+        #{$margin-inline-start}: 16px;
+    }
+}
+
+
+
+@media (max-width: breakpoint(sm-end)) {
+    .block-header {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .block-header__groups-list {
+        padding: 8px 0;
+        margin-top: 8px;
+        margin-bottom: -8px;
+        order: 100;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    .block-header__divider + .block-header__groups-list {
+        @include direction {
+            #{$margin-inline-start}: auto;
+            #{$margin-inline-end}: auto;
+        }
+    }
+    .block-header__divider + .block-header__groups-list + .block-header__arrows-list {
+        @include direction {
+            #{$margin-inline-start}: 16px;
+        }
+    }
+}

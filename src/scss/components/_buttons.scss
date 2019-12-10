@@ -1,0 +1,182 @@
+/*
+// .btn
+*/
+@import '../variables';
+@import '../functions';
+@import '../mixins/buttons';
+@import '../mixins/preloader';
+@import '../mixins/hacks';
+@import '../mixins/direction';
+
+
+$local-transition-duration: .1s;
+
+
+.btn {
+    border-radius: 2px;
+    transition: all $local-transition-duration ease-in-out;
+
+    @include btn-nl();
+}
+.btn-lg {
+    @include btn-lg();
+}
+.btn-xl {
+    @include btn-xl();
+}
+.btn-sm {
+    @include btn-sm();
+}
+.btn-xs {
+    @include btn-xs();
+}
+
+
+.btn-svg-icon {
+    padding: 0;
+    position: relative;
+
+    svg {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    @include only-ie() {
+        svg {
+            @include direction {
+                transform: translate((-50% * $transform-direction), -50%);
+            }
+        }
+    }
+}
+
+
+@mixin local-button-variant($bg, $font, $icon, $hover-bg, $hover-font, $hover-icon, $active-bg, $active-font, $active-icon) {
+    &.focus,
+    &:focus,
+    &:hover {
+        border-color: $hover-bg;
+        background: $hover-bg;
+        color: $hover-font;
+        fill: $hover-icon;
+
+        .fake-svg-icon {
+            color: $hover-icon;
+        }
+    }
+
+    &.focus,
+    &:focus {
+        box-shadow: none;
+    }
+
+    &:not(:disabled):not(.disabled):active,
+    &:not(:disabled):not(.disabled).active {
+        border-color: $active-bg;
+        background: $active-bg;
+        color: $active-font;
+        fill: $active-icon;
+
+        .fake-svg-icon {
+            color: $active-icon;
+        }
+
+        &:focus {
+            box-shadow: none;
+        }
+    }
+
+    &,
+    &.disabled,
+    &:disabled {
+        border-color: $bg;
+        background: $bg;
+        color: $font;
+        fill: $icon;
+
+        .fake-svg-icon {
+            color: $icon;
+        }
+    }
+
+    &.btn-loading:not(:disabled):not(.disabled),
+    &.btn-loading:not(:disabled):not(.disabled):active,
+    &.btn-loading:not(:disabled):not(.disabled).active  {
+        cursor: default;
+        border-color: $bg;
+        background: $bg;
+    }
+}
+
+
+.btn-primary {
+    @include local-button-variant(
+        $btn-primary-bg-color,        $btn-primary-font-color,        $btn-primary-icon-color,
+        $btn-primary-hover-bg-color,  $btn-primary-hover-font-color,  $btn-primary-hover-icon-color,
+        $btn-primary-active-bg-color, $btn-primary-active-font-color, $btn-primary-active-icon-color
+    );
+}
+.btn-secondary {
+    @include local-button-variant(
+        $btn-secondary-bg-color,        $btn-secondary-font-color,        $btn-secondary-icon-color,
+        $btn-secondary-hover-bg-color,  $btn-secondary-hover-font-color,  $btn-secondary-hover-icon-color,
+        $btn-secondary-active-bg-color, $btn-secondary-active-font-color, $btn-secondary-active-icon-color
+    );
+}
+.btn-light {
+    @include local-button-variant(
+        $btn-light-bg-color,        $btn-light-font-color,        $btn-light-icon-color,
+        $btn-light-hover-bg-color,  $btn-light-hover-font-color,  $btn-light-hover-icon-color,
+        $btn-light-active-bg-color, $btn-light-active-font-color, $btn-light-active-icon-color
+    );
+}
+
+
+/* loading state */
+.btn-loading {
+    position: relative;
+
+    /* hide button content */
+    &,
+    /* hover */
+    &:hover,
+    /* focus */
+    &.focus,
+    &:focus,
+    /* active */
+    &:not(:disabled):not(.disabled).active,
+    &:not(:disabled):not(.disabled):active,
+    /* disabled */
+    &.disabled,
+    &:disabled {
+        color: transparent;
+        fill: transparent;
+    }
+
+    &:after {
+        @include preloader();
+    }
+
+    /* nl size (default) */
+    &:after {
+        @include preloader-size(22px);
+    }
+    /* xl size */
+    &.btn-xl:after {
+        @include preloader-size(42px);
+    }
+    /* lg size */
+    &.btn-lg:after {
+        @include preloader-size(28px);
+    }
+    /* sm size */
+    &.btn-sm:after {
+        @include preloader-size(16px);
+    }
+    /* xs size */
+    &.btn-xs:after {
+        @include preloader-size(14px);
+    }
+}

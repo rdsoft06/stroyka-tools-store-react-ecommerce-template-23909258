@@ -1,0 +1,65 @@
+/*
+// .share-links
+*/
+@import '../variables';
+@import '../mixins/direction';
+
+
+.share-links {}
+.share-links__list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 11px;
+    line-height: 18px;
+    font-weight: $font-weight-medium;
+    color: $share-links-font-color;
+    white-space: nowrap;
+}
+.share-links__item {
+    & + & {
+        @include direction {
+            #{$margin-inline-start}: 4px;
+        }
+    }
+}
+.share-links__item a {
+    border-radius: 1.5px;
+    display: block;
+    padding: 2px 6px 1px 6px;
+
+    &, &:hover {
+        color: inherit;
+        text-decoration: none;
+    }
+}
+.share-links__item--type--like a {
+    background: $share-links-like-color;
+
+    &:hover {
+        background: darken($share-links-like-color, 5%);
+    }
+}
+.share-links__item--type--tweet a {
+    background: $share-links-tweet-color;
+
+    &:hover {
+        background: darken($share-links-tweet-color, 5%);
+    }
+}
+.share-links__item--type--pin a {
+    background: $share-links-pin-color;
+
+    &:hover {
+        background: darken($share-links-pin-color, 5%);
+    }
+}
+.share-links__item--type--counter a {
+    color: $share-links-counter-color;
+    box-shadow: $share-links-counter-shadow;
+
+    &:hover {
+        color: darken($share-links-counter-color, 5%);
+    }
+}

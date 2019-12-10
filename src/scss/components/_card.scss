@@ -1,0 +1,69 @@
+/*
+// .card
+*/
+@import '../variables';
+@import '../functions';
+
+
+.card {
+    border: $card-border;
+    border-radius: $card-border-radius;
+}
+.card-body {
+    padding: 2rem;
+}
+.card-header,
+.card-footer {
+    padding: 1.5rem 2rem;
+    border-top: none;
+    border-bottom: none;
+    background-color: transparent;
+
+    h1, h2, h3, h4, h5, h6 {
+        margin-bottom: 0;
+    }
+}
+.card-title {
+    margin-bottom: 1.75rem;
+
+    h1, h2, h3, h4, h5, h6 {
+        margin-bottom: 0;
+    }
+}
+.card-divider {
+    height: 2px;
+    background: $card-border-color;
+}
+.card-body .card-title:last-child {
+    margin-bottom: 0;
+}
+
+
+@media (min-width: breakpoint(md-start)) and (max-width: breakpoint(md-end)) {
+    .card-header,
+    .card-footer {
+        padding: 1.25rem 1.5rem;
+    }
+    .card-title {
+        font-size: 26px;
+        margin-bottom: 1.5rem;
+    }
+    .card-body {
+        padding: 1.5rem;
+    }
+}
+
+
+@media (max-width: breakpoint(sm-end)) {
+    .card-header,
+    .card-footer {
+        padding: 1rem 1.375rem;
+    }
+    .card-title {
+        font-size: 26px;
+        margin-bottom: 1.5rem;
+    }
+    .card-body {
+        padding: 1.375rem;
+    }
+}

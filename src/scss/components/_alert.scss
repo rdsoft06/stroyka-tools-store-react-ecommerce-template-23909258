@@ -1,0 +1,95 @@
+/*
+// .alert
+*/
+@import '../variables';
+@import '../mixins/direction';
+
+
+.alert {
+    border: none;
+    border-radius: 2px;
+    font-size: 15px;
+    line-height: 20px;
+    padding: .75rem 1rem;
+
+    a {
+        box-decoration-break: clone;
+        -webkit-box-decoration-break: clone;
+        color: currentColor;
+        background: $alert-link-default-bg;
+        border-radius: 1.5px;
+        padding: 0 3px;
+
+        &:hover {
+            background: $alert-link-hover-bg;
+        }
+        &:active {
+            background: $alert-link-active-bg;
+        }
+    }
+}
+.alert-primary {
+    background: $alert-primary-bg;
+    color: $alert-primary-font-color;
+}
+.alert-secondary {
+    background: $alert-secondary-bg;
+    color: $alert-secondary-font-color;
+}
+.alert-info {
+    background: $alert-info-bg;
+    color: $alert-info-font-color;
+}
+.alert-success {
+    background: $alert-success-bg;
+    color: $alert-success-font-color;
+}
+.alert-danger {
+    background: $alert-danger-bg;
+    color: $alert-danger-font-color;
+}
+.alert-warning {
+    background: $alert-warning-bg;
+    color: $alert-warning-font-color;
+}
+
+
+.alert-lg {
+    font-size: 16px;
+    padding: 1.125rem 1.375rem;
+}
+
+
+.alert-dismissible {
+    @include direction {
+        #{$padding-inline-end}: 3rem;
+    }
+}
+.alert-dismissible .close {
+    opacity: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1rem;
+    height: 100%;
+    transition: all .2s;
+    fill: $alert-close-button-default-color;
+    background: $alert-close-button-default-bg;
+
+    @include direction {
+        #{$inset-inline-start}: auto;
+        #{$inset-inline-end}: 0;
+
+        @include logical-border-radius(0 1.5px 1.5px 0);
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+.alert-dismissible .close:not(:disabled):not(.disabled):focus,
+.alert-dismissible .close:not(:disabled):not(.disabled):hover {
+    background: $alert-close-button-hover-bg;
+    fill: $alert-close-button-hover-color;
+    opacity: 1;
+}

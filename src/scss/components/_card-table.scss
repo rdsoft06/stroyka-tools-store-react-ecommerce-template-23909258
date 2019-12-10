@@ -1,0 +1,83 @@
+/*
+// .card-table
+*/
+@import '../variables';
+@import '../functions';
+@import '../mixins/direction';
+
+
+.card-table {
+    font-size: 15px;
+
+    table {
+        width: 100%;
+        min-width: 500px;
+
+        @include direction {
+            text-align: $inline-start;
+        }
+    }
+    thead th {
+        border-bottom: $card-border-width solid $card-border-color;
+        text-transform: uppercase;
+        color: $body-font-alt-color;
+        font-size: 13px;
+        font-weight: $font-weight-medium;
+        padding: 10px 12px;
+    }
+    tbody td {
+        padding: 12px 12px;
+    }
+    tbody tr + tr td {
+        border-top: 1px solid $card-border-color;
+    }
+    tbody tr:hover > * {
+        background-color: #f7f7f7;
+    }
+    th, td {
+        @include direction {
+            &:first-child {
+                #{$padding-inline-start}: 2rem;
+            }
+            &:last-child {
+                #{$padding-inline-end}: 2rem;
+            }
+        }
+    }
+}
+
+
+@media (min-width: breakpoint(md-start)) and (max-width: breakpoint(md-end)) {
+    .card-table {
+        font-size: 14px;
+
+        th, td {
+            @include direction {
+                &:first-child {
+                    #{$padding-inline-start}: 1.5rem;
+                }
+                &:last-child {
+                    #{$padding-inline-end}: 1.5rem;
+                }
+            }
+        }
+    }
+}
+
+
+@media (max-width: breakpoint(sm-end)) {
+    .card-table {
+        font-size: 14px;
+
+        th, td {
+            @include direction {
+                &:first-child {
+                    #{$padding-inline-start}: 1.375rem;
+                }
+                &:last-child {
+                    #{$padding-inline-end}: 1.375rem;
+                }
+            }
+        }
+    }
+}

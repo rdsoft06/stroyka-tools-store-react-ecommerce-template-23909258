@@ -1,0 +1,61 @@
+/*
+// .layout-switcher
+*/
+@import '../variables';
+@import '../mixins/direction';
+
+
+.layout-switcher {}
+.layout-switcher__list {
+    display: flex;
+}
+.layout-switcher__button {
+    border: 1px solid $layout-switcher-default-border-color;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 9px;
+    height: 32px;
+    border-radius: 0;
+    background: $layout-switcher-default-bg;
+    fill: $layout-switcher-default-color;
+
+    &:focus {
+        outline: none;
+    }
+
+    &:hover {
+        border-color: $layout-switcher-hover-border-color;
+        background: $layout-switcher-hover-bg;
+        fill: $layout-switcher-hover-color;
+    }
+
+    &:first-child {
+        @include direction {
+            #{$border-start-start-radius}: 2px;
+            #{$border-end-start-radius}: 2px;
+        }
+    }
+    &:last-child {
+        @include direction {
+            #{$border-start-end-radius}: 2px;
+            #{$border-end-end-radius}: 2px;
+        }
+    }
+
+    & + & {
+        @include direction {
+            #{$margin-inline-start}: -1px;
+        }
+    }
+}
+
+.layout-switcher__button--active,
+.layout-switcher__button--active:hover {
+    cursor: default;
+    border-color: $layout-switcher-active-border-color;
+    background: $layout-switcher-active-bg;
+    fill: $layout-switcher-active-color;
+    z-index: 1;
+}

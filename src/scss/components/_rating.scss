@@ -1,0 +1,35 @@
+/*
+// .rating
+*/
+@import '../variables';
+@import '../mixins/hacks';
+@import '../mixins/direction';
+
+
+.rating {}
+.rating__body {
+    display: flex;
+}
+.rating__star {
+    & + & {
+        @include direction {
+            #{$margin-inline-start}: 3px;
+        }
+    }
+}
+.rating__fill {
+    color: $rating-star-default-color;
+    fill: currentColor;
+}
+.rating__stroke {
+    color: $rating-star-default-stroke-color;
+    fill: currentColor;
+}
+.rating__star--active {
+    .rating__fill {
+        color: $rating-star-active-color;
+    }
+    .rating__stroke {
+        color: $rating-star-active-stroke-color;
+    }
+}

@@ -1,0 +1,104 @@
+/*
+// forms
+*/
+@import '../variables';
+@import '../functions';
+@import '../mixins/direction';
+
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+.form-check {
+    @include direction {
+        #{$padding-inline-start}: 1.5rem;
+    }
+}
+.form-check-input {
+    position: absolute;
+    margin-top: .1875rem;
+
+    @include direction {
+        #{$margin-inline-start}: -1.5rem;
+    }
+}
+
+@media (max-width: breakpoint(sm-end)) {
+    .form-group {
+        margin-bottom: 1.125rem;
+    }
+}
+
+
+.form-control {
+    border-radius: 2px;
+    line-height: 1.25;
+}
+.form-control-sm {
+    height: calc(1.875rem + 2px);
+    line-height: 1.25;
+    padding: .3125rem .5rem;
+}
+.form-control-lg {
+    height: calc(2.75rem + 2px);
+    line-height: 1.25;
+}
+
+
+.form-control:valid,
+.form-control.is-valid,
+.form-control:invalid,
+.form-control.is-invalid {
+    background-image: none;
+}
+
+
+// select
+@mixin local-select-arrow($color) {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 5 10'%3E%3Cpath fill='#{str-replace(#{$color}, '#', '%23')}' d='M4.503,4 L0.497,4 C0.094,4 -0.142,3.492 0.089,3.122 L2.095,0.233 C2.293,-0.084 2.712,-0.084 2.911,0.233 L4.911,3.122 C5.142,3.492 4.906,4 4.503,4 ZM0.497,6 L4.503,6 C4.906,6 5.142,6.504 4.911,6.871 L2.905,9.737 C2.707,10.052 2.288,10.052 2.089,9.737 L0.089,6.871 C-0.142,6.504 0.094,6 0.497,6 Z'/%3E%3C/svg%3E%0A");
+}
+@mixin local-select-define-size($size: '') {
+    @if ($size != '') {
+        $size: '-' + $size;
+    }
+
+    select.form-control#{$size},
+    select.form-control#{$size}:valid,
+    select.form-control#{$size}.is-valid,
+    select.form-control#{$size}:invalid,
+    select.form-control#{$size}.is-invalid {
+        @content;
+    }
+}
+select.form-control {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    &::-ms-expand {
+        display: none;
+    }
+}
+
+@include local-select-define-size() {
+    @include local-select-arrow($form-control-select-arrow-color);
+
+    background-repeat: no-repeat;
+    background-size: 5px 10px;
+
+    @include direction {
+        background-position: $inline-end .75rem center;
+        #{$padding-inline-end}: calc(.75rem * 2 + 5px);
+    }
+}
+@include local-select-define-size('sm') {
+    @include direction {
+        background-position: $inline-end .5rem center;
+        #{$padding-inline-end}: calc(.5rem * 2 + 5px);
+    }
+}
+@include local-select-define-size('lg') {
+    @include direction {
+        background-position: $inline-end 1rem center;
+        #{$padding-inline-end}: calc(1rem * 2 + 5px);
+    }
+}

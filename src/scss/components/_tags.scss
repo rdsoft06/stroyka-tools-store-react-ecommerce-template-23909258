@@ -1,0 +1,50 @@
+/*
+// .tags
+*/
+@import '../variables';
+
+
+$local-tag-margin: 2px;
+$local-tag-padding: 3px 8px 2px;
+$local-lg-tag-margin: 3px;
+$local-lg-tag-padding: 6px 10px 5px;
+
+
+.tags {}
+.tags__list {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 13px;
+    font-weight: $font-weight-medium;
+    line-height: 18px;
+    margin: -$local-tag-margin;
+
+    a {
+        display: block;
+        background: $tags-default-bg;
+        border: $tags-default-border;
+        color: $tags-default-font-color;
+        border-radius: $tags-border-radius;
+        padding: $local-tag-padding;
+        margin: $local-tag-margin;
+        transition: all .15s;
+    }
+    a:focus,
+    a:hover {
+        background: $tags-hover-bg;
+        border: $tags-hover-border;
+        color: $tags-hover-font-color;
+    }
+}
+
+
+.tags--lg {
+    .tags__list {
+        margin: -$local-lg-tag-margin;
+
+        a {
+            padding: $local-lg-tag-padding;
+            margin: $local-lg-tag-margin;
+        }
+    }
+}

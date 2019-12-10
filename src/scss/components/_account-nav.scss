@@ -1,0 +1,88 @@
+/*
+// .account-nav
+*/
+@import '../variables';
+@import '../functions';
+@import '../mixins/card';
+@import '../mixins/direction';
+
+
+.account-nav {
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+}
+.account-nav__item a {
+    display: block;
+    color: $body-font-alt-color;
+    font-size: 15px;
+
+    &:hover {
+        background-color: #f7f7f7;
+    }
+}
+
+
+@media (min-width: breakpoint(lg-start)) {
+    .account-nav {
+        @include card;
+
+        ul {
+            padding-bottom: 18px;
+        }
+    }
+    .account-nav__title {
+        font-size: 20px;
+        padding: 24px 26px 0;
+        margin-bottom: 1rem;
+    }
+    .account-nav__item a {
+        padding: 5px 26px;
+
+        @include direction {
+            #{$margin-inline-start}: -2px;
+            #{$border-inline-start}: $card-border-width solid $card-border-color;
+        }
+    }
+    .account-nav__item--active a {
+        color: $body-font-color;
+        font-weight: $font-weight-medium;
+
+        @include direction {
+            #{$border-inline-start}: $card-border-width solid $accent-color;
+        }
+    }
+}
+
+
+@media (max-width: breakpoint(md-end)) {
+    .account-nav__title {
+        display: none;
+    }
+    .account-nav {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+
+        ul {
+            display: flex;
+            flex-wrap: nowrap;
+            white-space: nowrap;
+            width: 100%;
+            border-bottom: $card-border-width solid $card-border-color;
+        }
+    }
+    .account-nav__item a {
+        padding: 8px 16px;
+        margin-bottom: -2px;
+        border-bottom: $card-border-width solid $card-border-color;
+    }
+    .account-nav__item--active a {
+        color: $body-font-color;
+        font-weight: $font-weight-medium;
+        border-color: $accent-color;
+    }
+}
+
+

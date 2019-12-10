@@ -1,0 +1,175 @@
+/*
+// .typography
+*/
+@import '../variables';
+@import '../functions';
+@import '../mixins/direction';
+
+
+.typography {
+    line-height: 1.625;
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        margin-top: 1.75em;
+        margin-bottom: .75em;
+    }
+
+    p {
+        margin-bottom: 1.5em;
+    }
+
+    ol, ul {
+        margin: 1.7em 0;
+    }
+
+    li {
+        margin-bottom: .7em;
+    }
+
+    > *:first-child {
+        margin-top: 0;
+    }
+    > *:last-child {
+        margin-bottom: 0;
+    }
+
+    a > img {
+        transition: opacity .2s;
+    }
+    a:hover > img {
+        opacity: .8;
+    }
+
+    img {
+        max-width: 100%;
+    }
+
+    figure {
+        margin: 2.5em 0;
+    }
+    figcaption {
+        margin-top: 20px;
+        text-align: center;
+        font-size: 14px;
+        color: $typography-figcaption-color;
+    }
+
+    hr {
+        $size: 4px;
+        $margin: 30px;
+
+        position: relative;
+        width: $size;
+        height: $size;
+        border-radius: $size / 2;
+        border: none;
+        background: $typography-hr-color;
+        margin: 2.5em auto;
+
+        &::after,
+        &::before {
+            position: absolute;
+            content: '';
+            display: block;
+            width: inherit;
+            height: inherit;
+            border-radius: inherit;
+            background: inherit;
+        }
+
+        &::after {
+            @include direction {
+                #{$inset-inline-start}: -$margin;
+            }
+        }
+
+        &::before {
+            @include direction {
+                #{$inset-inline-end}: -$margin;
+            }
+        }
+    }
+
+    blockquote {
+        margin: 3em 2.5em 2.5em;
+        text-align: center;
+        font-size: 18px;
+        font-style: italic;
+
+        cite {
+            margin-top: -.5em;
+            color: $typography-cite-color;
+            display: block;
+            font-size: 15px;
+            font-style: normal;
+        }
+
+        p {
+            margin-bottom: 1.25em;
+        }
+
+        > *:first-child {
+            margin-top: 0;
+        }
+        > *:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+
+@media (max-width: breakpoint(md-end)) {
+    .typography {
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 1.25em;
+            margin-bottom: .5em;
+        }
+    }
+}
+@media (max-width: breakpoint(sm-end)) {
+    .typography {
+        ol, ul {
+            margin: 1.5em 0;
+        }
+    }
+}
+@media (min-width: breakpoint(sm-start)) and (max-width: breakpoint(sm-end)) {
+    .typography blockquote {
+        margin: 2.5em 1.5em 2em;
+    }
+}
+@media (max-width: breakpoint(xs-end)) {
+    .typography blockquote {
+        font-size: 16px;
+        margin: 2.25em 0;
+
+        @include direction {
+            text-align: $inline-start;
+        }
+    }
+}
+
+
+.typography--expanded {
+    @media (min-width: breakpoint(lg-start)) {
+        figure {
+            text-align: center;
+            position: relative;
+            width: calc(100% + 190px);
+            margin: 3em 0;
+
+            @include direction {
+                #{$inset-inline-start}: -95px;
+            }
+
+            img {
+                overflow: hidden;
+                border-radius: 3px;
+            }
+        }
+    }
+}
