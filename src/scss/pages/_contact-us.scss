@@ -1,0 +1,46 @@
+/*
+// .contact-us
+*/
+@import '../variables';
+@import '../functions';
+
+
+.contact-us {}
+.contact-us__map {
+    position: relative;
+    height: 440px;
+    margin: -2px;
+    margin-bottom: 6px;
+    overflow: hidden;
+    border-radius: 2px 2px 0 0;
+
+    iframe {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+    }
+}
+
+
+@media (max-width: breakpoint(lg-end)) {
+    .contact-us__map {
+        height: 400px;
+    }
+}
+@media (max-width: breakpoint(md-end)) {
+    .contact-us__map {
+        height: 380px;
+    }
+}
+@media (max-width: breakpoint(sm-end)) {
+    .contact-us__map {
+        height: 360px;
+    }
+}
+@media (max-width: breakpoint(xs-end)) {
+    .contact-us__map {
+        height: 320px;
+    }
+}

@@ -1,0 +1,109 @@
+/*
+// .footer-newsletter
+*/
+@import '../variables';
+@import '../functions';
+@import '../mixins/direction';
+
+
+.footer-newsletter {}
+.footer-newsletter__title {
+    margin-bottom: 25px;
+}
+.footer-newsletter__text {
+    font-size: 15px;
+    line-height: 22px;
+    margin-bottom: 14px;
+}
+.footer-newsletter__text--social {
+    margin-top: 20px;
+    margin-bottom: 0;
+}
+
+.footer-newsletter__social-links {
+    display: flex;
+    margin: 8px 0 0;
+    padding: 0;
+    list-style: none;
+}
+.footer-newsletter__social-link {
+    & + & {
+        @include direction {
+            #{$margin-inline-start}: 7px;
+        }
+    }
+
+    a {
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: inherit;
+        width: 34px;
+        height: 34px;
+        border-radius: 17px;
+        transition: all .2s;
+    }
+    a:hover {
+        opacity: .8;
+    }
+}
+.footer-newsletter__social-link a {
+    color: $footer-social-link-icon-color;
+}
+.footer-newsletter__social-link--facebook a {
+    background: $footer-social-link-facebook-color;
+}
+.footer-newsletter__social-link--twitter a {
+    background: $footer-social-link-twitter-color;
+}
+.footer-newsletter__social-link--youtube a {
+    background: $footer-social-link-youtube-color;
+}
+.footer-newsletter__social-link--instagram a {
+    background: $footer-social-link-instagram-color;
+}
+.footer-newsletter__social-link--rss a {
+    background: $footer-social-link-rss-color;
+}
+.footer-newsletter__form {
+    display: flex;
+    max-width: 380px;
+}
+.footer-newsletter__form-button {
+    @include direction {
+        #{$margin-inline-start}: 6px;
+    }
+}
+
+
+
+@media (max-width: breakpoint(md-end)) {
+    .footer-newsletter {
+        margin-top: 42px;
+        max-width: 420px;
+    }
+    .footer-newsletter__title {
+        margin-bottom: 16px;
+    }
+}
+@media (max-width: breakpoint(sm-end)) {
+    .footer-newsletter {
+        text-align: center;
+
+        @include direction {
+            #{$margin-inline-start}: auto;
+            #{$margin-inline-end}: auto;
+        }
+    }
+    .footer-newsletter__title {
+        font-size: 28px;
+    }
+    .footer-newsletter__form {
+        margin: 0 auto;
+    }
+    .footer-newsletter__social-links {
+        margin-top: 16px;
+        justify-content: center;
+    }
+}

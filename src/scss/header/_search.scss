@@ -1,0 +1,98 @@
+/*
+// .search
+*/
+@import '../variables';
+
+
+.search {}
+.search__form {
+    position: relative;
+    height: $search-height;
+    display: flex;
+}
+.search__border {
+    z-index: -1;
+    position: absolute;
+    pointer-events: none;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: $search-border-radius;
+    transition: box-shadow .15s, background .15s;
+}
+.search__input {
+    border: none;
+    padding: 0 17px;
+    background: transparent;
+    width: 1px;
+    flex-grow: 1;
+    font-size: 15px;
+    transition: color .15s;
+    color: $search-input-default-font-color;
+
+    &::placeholder {
+        color: $search-input-default-placeholder;
+    }
+    & ~ .search__border {
+        background: $search-input-default-bg;
+        box-shadow: $search-input-default-shadow;
+    }
+
+    &:hover {
+        color: $search-input-hover-font-color;
+
+        &::placeholder {
+            color: $search-input-hover-placeholder;
+        }
+        & ~ .search__border {
+            background: $search-input-hover-bg;
+            box-shadow: $search-input-hover-shadow;
+        }
+        & ~ .search__button {
+            fill: $search-input-hover-icon-color;
+
+            &:hover {
+                fill: $search-input-hover-icon-hover-color;
+            }
+        }
+    }
+    &:focus {
+        outline: none;
+        color: $search-input-focus-font-color;
+
+        &::placeholder {
+            color: $search-input-focus-placeholder;
+        }
+        & ~ .search__border {
+            background: $search-input-focus-bg;
+            box-shadow: $search-input-focus-shadow;
+        }
+        & ~ .search__button {
+            fill: $search-input-focus-icon-color;
+
+            &:hover {
+                fill: $search-input-focus-icon-hover-color;
+            }
+        }
+    }
+}
+.search__button {
+    border: none;
+    padding: 0;
+    background: transparent;
+    flex-grow: 0;
+    width: $search-height;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    fill: $search-input-default-icon-color;
+    transition: fill .15s;
+
+    &:hover,
+    &:focus {
+        outline: none;
+        fill: $search-input-default-icon-hover-color;
+    }
+}

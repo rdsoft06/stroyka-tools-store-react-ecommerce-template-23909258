@@ -1,0 +1,31 @@
+/*
+// .reviews-list
+*/
+@import '../variables';
+@import '../functions';
+
+
+.reviews-list {}
+.reviews-list__content {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.reviews-list__item {
+    border-bottom: 1px solid $card-divider-color;
+    padding-top: 28px;
+    padding-bottom: 24px;
+
+    &:first-child {
+        padding-top: 0;
+    }
+}
+.reviews-list__pagination {
+    margin-top: 36px;
+}
+
+@media (max-width: breakpoint(sm-end)) {
+    .reviews-list__pagination {
+        margin-top: 30px;
+    }
+}

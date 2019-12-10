@@ -1,0 +1,103 @@
+/*
+// .view-options
+*/
+@import '../variables';
+@import '../functions';
+@import '../mixins/direction';
+
+
+.view-options {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+}
+.view-options__legend {
+    @include direction {
+        #{$margin-inline-start}: 20px;
+    }
+}
+.view-options__divider {
+    flex-grow: 1;
+}
+.view-options__filters-button {
+    @include direction {
+        #{$margin-inline-end}: 12px;
+    }
+}
+.view-options__control {
+    display: flex;
+    align-items: center;
+
+    @include direction {
+        #{$margin-inline-start}: 24px;
+    }
+
+    label {
+        margin-bottom: 0;
+
+        @include direction {
+            #{$margin-inline-end}: 8px;
+        }
+    }
+}
+
+
+@media (max-width: breakpoint(md-end)) {
+    .view-options {
+        flex-wrap: wrap;
+    }
+    .view-options__legend {
+        @include direction {
+            #{$margin-inline-start}: auto;
+        }
+    }
+    .view-options__divider {
+        width: 100%;
+        height: 12px;
+    }
+    .view-options__control {
+        @include direction {
+            #{$margin-inline-start}: auto;
+        }
+
+        & + & {
+            @include direction {
+                #{$margin-inline-start}: 24px;
+            }
+        }
+    }
+}
+
+
+@media (max-width: 474px) {
+    .view-options__legend {
+        width: 100%;
+        padding-top: 12px;
+    }
+    .view-options__divider {
+        height: 8px;
+    }
+    .view-options__control {
+        display: block;
+
+        @include direction {
+            #{$margin-inline-start}: 0;
+            #{$margin-inline-end}: 24px;
+        }
+
+        & + & {
+            @include direction {
+                #{$margin-inline-start}: 0;
+            }
+        }
+    }
+}
+
+
+.view-options--offcanvas--mobile {
+    @media (min-width: breakpoint(lg-start)) {
+        .view-options__filters-button {
+            display: none;
+        }
+    }
+}

@@ -1,0 +1,185 @@
+/*
+// .widget-categories
+*/
+@import '../variables';
+@import '../mixins/card';
+@import '../mixins/direction';
+
+
+$local-expand-transition-duration: .2s;
+
+
+.widget-categories {
+    @include card();
+
+    padding: $widget-blog-padding;
+
+    @media (max-width: 479px) {
+        padding: 20px;
+    }
+}
+.widget-categories__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    line-height: 18px;
+    font-size: 16px;
+}
+.widget-categories__row {
+    display: flex;
+
+    a {
+        position: relative;
+        display: block;
+        color: inherit;
+        padding-top: 7px;
+        padding-bottom: 7px;
+        fill: $widget-categories-arrow-color;
+        transition: .15s color;
+        flex-grow: 1;
+
+        @include direction {
+            #{$padding-inline-start}: 16px;
+            #{$padding-inline-end}: 10px;
+        }
+
+        &:hover {
+            color: $link-hover-color;
+        }
+    }
+}
+.widget-categories__arrow {
+    position: absolute;
+    top: calc(50% - 5px);
+
+    @include direction {
+        #{$inset-inline-start}: 0;
+        transform: scaleX(1 * $transform-direction);
+    }
+}
+.widget-categories__expander {
+    $local-size: 28px;
+    $local-icon-size: 8px;
+
+    margin-top: 1px;
+    width: $local-size;
+    height: $local-size;
+    position: relative;
+    border: none;
+    border-radius: 1.5px;
+    cursor: pointer;
+    padding: 0;
+    background: $widget-categories-expander-default-bg;
+    color: $widget-categories-expander-default-font-color;
+    transition: all .2s;
+
+    @include direction {
+        #{$margin-inline-end}: ($local-size - $local-icon-size) / 2 * -1;
+    }
+
+    &:focus,
+    &:hover {
+        background: $widget-categories-expander-hover-bg;
+        color: $widget-categories-expander-hover-font-color;
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    &::before,
+    &::after {
+        display: block;
+        position: absolute;
+        content: '';
+        background: currentColor;
+    }
+
+    &::before {
+        width: $local-icon-size;
+        height: 2px;
+        top: calc(50% - 1px);
+
+        @include direction {
+            #{$inset-inline-start}: calc(50% - #{$local-icon-size / 2});
+        }
+    }
+
+    &::after {
+        width: 2px;
+        height: $local-icon-size;
+        top: calc(50% - #{$local-icon-size / 2});
+        transition: transform $local-expand-transition-duration;
+
+        @include direction {
+            #{$inset-inline-start}: calc(50% - 1px);
+        }
+    }
+}
+.widget-categories__subs {
+    overflow: hidden;
+    height: 0;
+    opacity: 0;
+    visibility: hidden;
+    font-size: 15px;
+    line-height: 26px;
+    transition: height $local-expand-transition-duration,
+                opacity $local-expand-transition-duration,
+                visibility 0s $local-expand-transition-duration;
+
+    ul {
+        list-style: none;
+        padding: 6px 0 8px 0;
+        margin: 0;
+    }
+
+    li {
+        position: relative;
+
+        @include direction {
+            #{$padding-inline-start}: 32px;
+        }
+
+        &::before {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 10px;
+            width: 6px;
+            height: 6px;
+            border: 1px solid $widget-categories-circle-color;
+            border-radius: 3px;
+
+            @include direction {
+                #{$inset-inline-start}: 16px;
+            }
+        }
+    }
+
+    a {
+        color: inherit;
+        transition: .15s color;
+
+        &:hover {
+            color: $link-hover-color;
+        }
+    }
+}
+
+.widget-categories__item--open {
+    .widget-categories__expander::after {
+        transform: rotateZ(90deg);
+    }
+
+    .widget-categories__subs {
+        height: auto;
+        opacity: 1;
+        visibility: visible;
+        transition-delay: 0s, 0s, 0s;
+    }
+}
+
+
+.widget-categories--location--shop {
+    padding: $widget-shop-padding;
+}

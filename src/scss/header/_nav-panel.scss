@@ -1,0 +1,66 @@
+/*
+// .nav-panel
+*/
+@import '../variables';
+@import '../functions';
+@import '../mixins/direction';
+
+
+.nav-panel {
+    height: $nav-panel-height;
+    background: $nav-panel-bg;
+    box-shadow: $nav-panel-shadow;
+    color: $nav-panel-font-color;
+}
+.nav-panel--stuck {
+    z-index: 10;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    box-shadow: $nav-panel-stuck-shadow;
+}
+.nav-panel__container {
+    height: 100%;
+}
+.nav-panel__row {
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: 100%;
+}
+.nav-panel__logo svg {
+    display: block;
+    fill: $nav-panel-logo-color;
+}
+.nav-panel__departments {
+    flex-shrink: 0;
+}
+.nav-panel__logo + .nav-panel__nav-links,
+.nav-panel__departments + .nav-panel__nav-links {
+    @include direction {
+        #{$margin-inline-start}: 18px;
+    }
+}
+.nav-panel__nav-links {
+    @include direction {
+        #{$margin-inline-end}: 18px;
+    }
+}
+.nav-panel__indicators {
+    display: flex;
+    height: 100%;
+
+    @include direction {
+        #{$margin-inline-start}: auto;
+    }
+}
+
+
+@media (min-width: breakpoint(lg-start)) and (max-width: breakpoint(lg-end)) {
+    .nav-panel__nav-links {
+        @include direction {
+            #{$margin-inline-start}: 14px;
+            #{$margin-inline-end}: 14px;
+        }
+    }
+}

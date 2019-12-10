@@ -1,0 +1,77 @@
+/*
+// .widget-search
+*/
+@import '../variables';
+@import '../mixins/direction';
+
+
+$local-height: 48px;
+
+
+.widget-search {
+    height: $local-height;
+}
+.widget-search__body {
+    position: relative;
+    height: 100%;
+}
+.widget-search__input {
+    box-shadow: $widget-search-input-default-shadow;
+    transition: box-shadow .2s;
+    border-radius: 2px;
+    height: 100%;
+    width: 100%;
+    background: transparent;
+    border: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: inherit;
+    appearance: none;
+
+    @include direction {
+        #{$padding-inline-start}: 18px;
+        #{$padding-inline-end}: $local-height;
+    }
+
+    &:hover {
+        box-shadow: $widget-search-input-hover-shadow;
+    }
+    &:focus {
+        outline: none;
+        box-shadow: $widget-search-input-focus-shadow;
+    }
+
+    &::placeholder {
+        color: $widget-search-input-placeholder;
+    }
+}
+.widget-search__button {
+    height: $local-height;
+    width: $local-height;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    background: transparent;
+    border: none;
+    padding: 0;
+    fill: $widget-search-button-default-color;
+    transition: fill .2s;
+
+    @include direction {
+        #{$inset-inline-end}: 0;
+    }
+
+    svg {
+        position: absolute;
+        left: calc(50% - 10px);
+        top: calc(50% - 10px);
+    }
+
+    &:focus {
+        outline: none;
+    }
+    &:focus,
+    &:hover {
+        fill: $widget-search-button-hover-color;
+    }
+}

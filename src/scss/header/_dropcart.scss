@@ -1,0 +1,124 @@
+/*
+// .dropcart
+*/
+@import '../variables';
+@import '../mixins/hacks';
+@import '../mixins/direction';
+
+
+.dropcart {
+    font-size: 15px;
+    width: 320px;
+    font-weight: $font-weight-normal;
+    color: $dropcart-font-color;
+    background: $dropcart-bg;
+    box-shadow: $dropcart-shadow;
+
+    // without it IE renders a blurred menu
+    @include only-ie() {
+        box-shadow: 0 0 0 1px rgba(#000, .15);
+    }
+}
+.dropcart__empty {
+    padding: 42px 30px;
+    text-align: center;
+}
+.dropcart__products-list {
+    padding: 20px 16px;
+}
+.dropcart__product {
+    display: flex;
+
+    & + & {
+        margin-top: 24px;
+    }
+}
+.dropcart__product-image {
+    width: 70px;
+    flex-shrink: 0;
+
+    img {
+        max-width: 100%;
+    }
+}
+.dropcart__product-name {
+    margin-top: -2px;
+    line-height: 18px;
+    font-size: 15px;
+
+    a {
+        color: inherit;
+        transition: .15s;
+    }
+    a:hover {
+        color: $link-hover-color;
+    }
+}
+.dropcart__product-info {
+    margin: 0;
+    flex-grow: 1;
+
+    @include direction {
+        #{$padding-inline-end}: 10px;
+        #{$padding-inline-start}: 16px;
+    }
+}
+.dropcart__product-options {
+    list-style: none;
+    margin: 3px 0 0;
+    padding: 0;
+    font-size: 13px;
+    line-height: 16px;
+    color: $dropcart-font-muted-color;
+}
+.dropcart__product-meta {
+    margin-top: 5px;
+    font-size: 13px;
+}
+.dropcart__product-price {
+    font-size: 14px;
+    font-weight: $font-weight-bold;
+}
+.dropcart__product-remove {
+    margin-top: -6px;
+    flex-shrink: 0;
+
+    @include direction {
+        #{$margin-inline-end}: -6px;
+    }
+}
+.dropcart__totals {
+    border-top: 1px solid $dropcart-divider-color;
+    line-height: 24px;
+    padding: 16px 20px 0;
+
+    th {
+        @include direction {
+            #{$padding-inline-end}: 16px;
+        }
+    }
+    td {
+        @include direction {
+            text-align: $inline-end;
+        }
+    }
+
+    table {
+        width: 100%;
+    }
+}
+.dropcart__buttons {
+    display: flex;
+    margin-top: 4px;
+    padding: 20px;
+
+    > * {
+        flex-grow: 1;
+    }
+
+    > :first-child {
+        @include direction {
+            #{$margin-inline-end}: 8px;
+        }
+    }
+}

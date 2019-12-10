@@ -1,0 +1,62 @@
+/*
+// .widget-products
+*/
+@import '../variables';
+@import '../mixins/card';
+@import '../mixins/direction';
+
+
+.widget-products {
+    @include card();
+    padding: 20px;
+}
+.widget-products__list {
+    padding-top: 8px;
+}
+.widget-products__item {
+    display: flex;
+
+    & + & {
+        margin-top: 18px;
+    }
+}
+.widget-products__image {
+    width: 50px;
+    flex-shrink: 0;
+
+    @include direction {
+        #{$margin-inline-end}: 12px;
+    }
+
+    img {
+        max-width: 100%;
+    }
+}
+.widget-products__name {
+    margin-top: -2px;
+    font-size: 14px;
+    line-height: 17px;
+
+    a {
+        color: inherit;
+        transition: .15s;
+    }
+    a:hover {
+        color: $link-hover-color;
+    }
+}
+.widget-products__prices {
+    padding-top: 2px;
+    font-size: 14px;
+    font-weight: $font-weight-bold;
+    color: $price-color;
+}
+.widget-products__new-price {
+    color: $price-new-color;
+}
+.widget-products__old-price {
+    color: $price-old-color;
+    font-weight: $font-weight-normal;
+    font-size: 12px;
+    text-decoration: line-through;
+}

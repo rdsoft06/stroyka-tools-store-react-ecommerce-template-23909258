@@ -1,0 +1,51 @@
+// colors
+$light-opposite-color:  #3d464d       !default;
+$accent-color:          #47991f       !default;
+$accent-opposite-color: #fff          !default;
+$link-color:            $accent-color !default;
+$link-hover-color:      $accent-color !default;
+
+
+// .topbar
+$topbar-bg:                transparent               !default;
+$topbar-height:            34px                      !default;
+$topbar-shadow:            0 0 0 1px rgba(#000, .08) !default;
+$topbar-font-color:        #8c8c8c                   !default;
+$topbar-dropdown-hover-bg: #f2f2f2                   !default;
+
+
+// .nav-links
+$nav-links-item-font-weight:         400             !default;
+$nav-links-item-default-arrow-color: rgba(#000, .25) !default;
+$nav-links-item-hover-bg:            rgba(#fff, .15) !default;
+
+
+// .mobile-header
+$mobile-header-menu-button-hover-bg:                  $nav-links-item-hover-bg !default;
+// search input default
+$mobile-header-search-input-default-bg:               rgba(#fff, .4)           !default;
+$mobile-header-search-input-default-shadow:           none                     !default;
+$mobile-header-search-input-default-placeholder:      rgba(#000, .5)           !default;
+$mobile-header-search-input-default-font-color:       $light-opposite-color    !default;
+$mobile-header-search-input-default-icon-color:       rgba(#000, .4)           !default;
+$mobile-header-search-input-default-icon-hover-color: $light-opposite-color    !default;
+// search input hover
+$mobile-header-search-input-hover-bg:                 rgba(#fff, .6)           !default;
+// search input focus
+$mobile-header-search-input-focus-bg:                 #fff                     !default;
+$mobile-header-search-input-focus-shadow:             0 1px 5px rgba(#000, .2) !default;
+$mobile-header-search-input-focus-placeholder:        #999                     !default;
+$mobile-header-search-input-focus-font-color:         $light-opposite-color    !default;
+$mobile-header-search-input-focus-icon-color:         #b3b3b3                  !default;
+$mobile-header-search-input-focus-icon-hover-color:   $light-opposite-color    !default;
+
+
+// .product-card
+$product-card-hover-shadow:            0 0 0 2px #e5e5e5 inset !default;
+$product-card-quickview-default-bg:    #e5e5e5                 !default;
+$product-card-quickview-default-color: $light-opposite-color   !default;
+
+
+// .nouislider
+$nouislider-border-color: $accent-color          !default;
+$nouislider-handle-color: $accent-opposite-color !default;

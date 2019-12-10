@@ -1,0 +1,56 @@
+/*
+// .quickview
+*/
+@import '../variables';
+@import '../functions';
+@import '../mixins/direction';
+
+
+$local-close-button-size: 50px;
+
+
+.quickview {
+    padding: 60px;
+    position: relative;
+}
+.quickview__close {
+    position: absolute;
+    top: 0;
+    width: $local-close-button-size;
+    height: $local-close-button-size;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background: $quickview-bg;
+    border-radius: 3px;
+    border: none;
+    fill: $quickview-close-default-color;
+    transition: all .2s;
+    z-index: 2;
+
+    @include direction {
+        #{$inset-inline-end}: 0;
+    }
+
+    &:focus,
+    &:hover {
+        fill: $quickview-close-hover-color;
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+
+
+@media (min-width: breakpoint(sm-start)) and (max-width: breakpoint(lg-end)) {
+    .quickview {
+        padding: 30px;
+    }
+}
+@media (max-width: breakpoint(xs-end)) {
+    .quickview {
+        padding: 20px;
+    }
+}

@@ -1,0 +1,54 @@
+/*
+// .drop-search
+*/
+@import '../variables';
+@import '../mixins/direction';
+
+
+$local-height: 50px;
+$local-width: 320px;
+
+
+.drop-search {
+    color: $drop-search-font-color;
+    background: $drop-search-bg;
+    box-shadow: $drop-search-shadow;
+}
+.drop-search__form {
+    display: flex;
+    height: $local-height;
+    width: $local-width;
+}
+.drop-search__input,
+.drop-search__button {
+    border: none;
+    padding: 0;
+    background: transparent;
+
+    &:focus {
+        outline: none;
+    }
+}
+.drop-search__input {
+    padding: 0;
+    flex-grow: 1;
+    flex-basis: 0;
+    width: 0;
+
+    @include direction {
+        #{$padding-inline-start}: 18px;
+    }
+}
+.drop-search__button {
+    flex-shrink: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: $local-height + 2px;
+    fill: $drop-search-button-default-color;
+    transition: fill .2s;
+}
+.drop-search__button:hover {
+    fill: $drop-search-button-hover-color;
+}

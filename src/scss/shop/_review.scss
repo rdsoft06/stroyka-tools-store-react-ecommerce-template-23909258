@@ -1,0 +1,58 @@
+/*
+// .review
+*/
+@import '../variables';
+@import '../functions';
+@import '../mixins/direction';
+
+
+.review {
+    display: flex;
+}
+.review__avatar {
+    flex-shrink: 0;
+
+    @include direction {
+        #{$margin-inline-start}: 16px;
+        #{$margin-inline-end}: 24px;
+    }
+
+    img {
+        width: 70px;
+        border-radius: 1000px;
+    }
+}
+.review__author {
+    margin-top: -4px;
+    font-size: 16px;
+    font-weight: $font-weight-medium;
+}
+.review__rating {
+    margin-top: 2px;
+}
+.review__text {
+    font-size: 16px;
+    margin-top: 12px;
+}
+.review__date {
+    margin-top: 10px;
+    color: $card-font-muted-color;
+    font-size: 14px;
+}
+
+@media (min-width: breakpoint(sm-start)) and (max-width: breakpoint(sm-end)) {
+    .review__avatar {
+        @include direction {
+            #{$margin-inline-end}: 18px;
+        }
+
+        img {
+            width: 60px;
+        }
+    }
+}
+@media (max-width: breakpoint(xs-end)) {
+    .review__avatar {
+        display: none;
+    }
+}

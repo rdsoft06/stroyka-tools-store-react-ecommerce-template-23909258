@@ -1,0 +1,247 @@
+/*
+// .cart-table
+*/
+@import '../variables';
+@import '../functions';
+@import '../mixins/direction';
+
+
+.cart-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+.cart-table__product-name {
+    color: inherit;
+}
+.cart-table__options {
+    list-style: none;
+    padding: 0;
+    margin: 4px 0 0;
+    font-size: 14px;
+    color: $cart-table-options-font-color;
+    line-height: 19px;
+
+    li {
+        position: relative;
+
+        @include direction {
+            #{$padding-inline-start}: 12px;
+        }
+    }
+    li::before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 7px;
+        width: 4px;
+        height: 4px;
+        border-radius: 2px;
+        background: currentColor;
+
+        @include direction {
+            #{$inset-inline-start}: 1px;
+        }
+    }
+}
+
+
+@media (min-width: breakpoint(md-start)) {
+    .cart-table__column {
+        padding: 12px 18px;
+        border-top: 1px solid $table-border-color;
+
+        &:first-child {
+            @include direction {
+                #{$border-inline-start}: 1px solid $table-border-color;
+            }
+        }
+        &:last-child {
+            @include direction {
+                #{$border-inline-end}: 1px solid $table-border-color;
+            }
+        }
+    }
+    .cart-table__head {
+        background: $table-th-bg;
+        font-size: 15px;
+
+        .cart-table__column {
+            font-weight: $font-weight-medium;
+        }
+        .cart-table__column:first-child {
+            @include direction {
+                #{$border-start-start-radius}: $table-border-radius;
+            }
+        }
+        .cart-table__column:last-child {
+            @include direction {
+                #{$border-start-end-radius}: $table-border-radius;
+            }
+        }
+    }
+    .cart-table__body {
+        .cart-table__column {
+            padding-top: 18px;
+            padding-bottom: 18px;
+        }
+        .cart-table__row:last-child {
+            .cart-table__column {
+                border-bottom: 1px solid $table-border-color;
+            }
+            .cart-table__column:first-child {
+                @include direction {
+                    #{$border-end-start-radius}: $table-border-radius;
+                }
+            }
+            .cart-table__column:last-child {
+                @include direction {
+                    #{$border-end-end-radius}: $table-border-radius;
+                }
+            }
+        }
+    }
+    .cart-table__column--image {
+        width: 1px;
+        text-align: center;
+
+        img {
+            width: 80px;
+        }
+    }
+    .cart-table__column--price {
+        width: 170px;
+
+        @include direction {
+            text-align: $inline-end;
+        }
+    }
+    .cart-table__column--quantity {
+        text-align: center;
+        width: 1px;
+
+        @include direction {
+            #{$padding-inline-start}: 90px;
+        }
+    }
+    .cart-table__column--total {
+        width: 170px;
+
+        @include direction {
+            text-align: $inline-end;
+        }
+    }
+    .cart-table__column--remove {
+        width: 1px;
+    }
+}
+@media (min-width: breakpoint(lg-start)) and (max-width: breakpoint(lg-end)) {
+    .cart-table__column--quantity {
+        @include direction {
+            #{$padding-inline-start}: 40px;
+        }
+    }
+    .cart-table__column--price,
+    .cart-table__column--total {
+        width: 130px;
+    }
+}
+@media (min-width: breakpoint(md-start)) and (max-width: breakpoint(md-end)) {
+    .cart-table__column--quantity {
+        @include direction {
+            #{$padding-inline-start}: 0;
+            #{$padding-inline-end}: 0;
+        }
+    }
+    .cart-table__column--price,
+    .cart-table__column--total {
+        width: 1px;
+    }
+    .cart-table__column--remove {
+        @include direction {
+            #{$padding-inline-start}: 0;
+        }
+    }
+}
+
+
+@media (max-width: breakpoint(sm-end)) {
+    .cart-table {
+        display: block;
+    }
+    .cart-table__head {
+        display: none;
+    }
+    .cart-table__body {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .cart-table__row {
+        position: relative;
+        width: 100%;
+        display: block;
+        border: 1px solid $cart-table-card-border-color;
+        border-radius: 2px;
+
+        & + & {
+            margin-top: 15px;
+        }
+    }
+    .cart-table__column {
+        display: block;
+        padding: 0;
+    }
+    .cart-table__column--image {
+        padding: 20px 20px 10px;
+        text-align: center;
+
+        img {
+            width: 100%;
+            max-width: 160px;
+        }
+    }
+    .cart-table__column--product {
+        text-align: center;
+        border-bottom: 1px solid $cart-table-card-border-color;
+        padding: 0 20px 18px;
+    }
+    .cart-table__column--price,
+    .cart-table__column--quantity,
+    .cart-table__column--total {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 8px 20px;
+
+        &::before {
+            font-weight: $font-weight-medium;
+            width: 55%;
+            flex-shrink: 0;
+            content: attr(data-title) ": ";
+
+            @include direction {
+                text-align: $inline-end;
+            }
+        }
+    }
+    .cart-table__column--quantity .input-number {
+        width: 110px;
+    }
+    .cart-table__column--price {
+        padding-top: 18px;
+    }
+    .cart-table__column--total {
+        padding-bottom: 18px;
+    }
+    .cart-table__column--remove {
+        position: absolute;
+        top: 5px;
+
+        @include direction {
+            #{$inset-inline-end}: 5px;
+        }
+    }
+    .cart-table__options li::before {
+        display: none;
+    }
+}

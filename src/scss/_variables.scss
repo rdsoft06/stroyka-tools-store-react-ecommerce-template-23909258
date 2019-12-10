@@ -1,0 +1,945 @@
+@import 'custom-variables';
+
+
+// ----------------------------------------
+// Table of Contents
+// ----------------------------------------
+// - direction
+// - colors
+// - helpers
+// - body
+// - header
+//   - .topbar
+//   - .topbar-link
+//   - .topbar-dropdown
+//   - .search
+//   - .nav-panel, .mobile-header
+//   - .departments
+//   - .nav-links
+//   - .indicator
+//   - .drop-search
+//   - .mobile-header
+//      - offcanvas-search
+//   - .mobilemenu
+//   - .dropcart
+//   - .menu
+//   - .megamenu
+// - footer
+// - common
+//   - headers
+//   - table
+//   - price
+//   - preloader
+//   - post-image-overlay
+// - components
+//   - .alert
+//   - .block-header
+//   - .breadcrumb
+//   - .btn (buttons.scss)
+//   - .card
+//   - .form-control (form.scss)
+//   - .input-check
+//   - .input-check-color
+//   - .input-radio
+//   - .input-radio-color
+//   - .input-radio-label
+//   - .layout-switcher
+//   - .filters-button
+//   - .modal
+//   - .nouislider
+//   - .pagination
+//   - .post-card
+//   - .product-card
+//   - .rating
+//   - .share-links
+//   - .tags
+//   - .tooltip
+//   - .typography
+// - shop
+//   - .cart
+//   - .cart-table
+//   - .category-card
+//   - .product-gallery
+//   - .product-tabs
+//   - .quickview
+//   - .wishlist
+// - other
+//   - .post
+//   - .payment-methods
+//   - .teammates
+//   - .filter
+// - blocks
+//   - .block
+//   - .block-features
+//   - .block-map
+//   - .block-products-carousel
+//   - .block-slideshow
+// - widgets
+//   - .widget-aboutus
+//   - .widget-categories
+//   - .widget-newsletter
+//   - .widget-search
+
+
+// ----------------------------------------
+// -- direction
+// ----------------------------------------
+   $direction:                 ltr                                      !default; // or rtl
+   $both-directions:           true                                     !default;
+
+   $inline-start:              if($direction == ltr, left, right)       !default;
+   $inline-end:                if($direction == ltr, right, left)       !default;
+   $transform-direction:       if($direction == ltr, 1, -1)             !default;
+
+   $margin-inline-start:       margin- + $inline-start                  !default;
+   $margin-inline-end:         margin- + $inline-end                    !default;
+   $padding-inline-start:      padding- + $inline-start                 !default;
+   $padding-inline-end:        padding- + $inline-end                   !default;
+   $inset-inline-start:        $inline-start                            !default;
+   $inset-inline-end:          $inline-end                              !default;
+   $border-inline-start:       border- + $inline-start                  !default;
+   $border-inline-end:         border- + $inline-end                    !default;
+   $border-start-start-radius: border-top- + $inline-start + -radius    !default;
+   $border-start-end-radius:   border-top- + $inline-end + -radius      !default;
+   $border-end-start-radius:   border-bottom- + $inline-start + -radius !default;
+   $border-end-end-radius:     border-bottom- + $inline-end + -radius   !default;
+
+
+// ----------------------------------------
+// -- colors
+// ----------------------------------------
+   // light
+   $light-color:                    #fff                  !default;
+   $light-opposite-color:           #4a5e6e               !default;
+   $light-opposite-muted-color:     #4a5e6e                  !default;
+   $light-opposite-alt-color:       #6c757d               !default;
+   $light-divider-color:            #ebebeb               !default;
+   // dark
+   $dark-color:                     $light-opposite-color !default;
+   $dark-opposite-color:            $light-color          !default;
+   // accent
+   $accent-color:                   #f49c15               !default;
+   $accent-opposite-color:          white !default;
+   //links
+   $link-color:                     #f49c15               !default;
+   $link-hover-color:               #f49c15               !default;
+
+
+// ----------------------------------------
+// -- helpers
+// ----------------------------------------
+   // Font Weight
+   $font-weight-thin:        100 !default;
+   $font-weight-extra-light: 200 !default;
+   $font-weight-light:       300 !default;
+   $font-weight-normal:      400 !default;
+   $font-weight-medium:      500 !default;
+   $font-weight-semi-bold:   600 !default;
+   $font-weight-bold:        700 !default;
+   $font-weight-extra-bold:  800 !default;
+   $font-weight-black:       900 !default;
+   // breakpoints
+   $breakpoints: (
+      xs-start: 0px,
+      xs-end:   575px,
+      sm-start: 576px,
+      sm-end:   767px,
+      md-start: 768px,
+      md-end:   991px,
+      lg-start: 992px,
+      lg-end:   1199px,
+      xl-start: 1200px
+   );
+
+
+// ----------------------------------------
+// -- body
+// ----------------------------------------
+   $body-bg:               $light-color                !default;
+   $body-font-color:       $light-opposite-color       !default;
+   $body-font-muted-color: $light-opposite-muted-color !default;
+   $body-font-alt-color:   $light-opposite-alt-color   !default;
+   $body-font-family:      'Roboto', 'sans-serif'      !default;
+   $body-font-size:        16px                        !default;
+   $body-font-weight:      $font-weight-normal         !default;
+   $body-line-height:      1.5                         !default;
+   $body-divider-color:    $light-divider-color        !default;
+
+
+// ----------------------------------------
+// -- header
+// ----------------------------------------
+      $header-bg:               transparent            !default;
+      $header-font-color:       inherit                !default;
+      $header-font-muted-color: $body-font-muted-color !default;
+      $header-logo-color:       inherit                !default;
+
+   // ----------------------------------------
+   // -- .topbar
+   // ----------------------------------------
+      $topbar-height:        32px    !default;
+      $topbar-bg:            #f7f7f7 !default;
+      $topbar-shadow:        none    !default;
+      $topbar-border-bottom: none    !default;
+      $topbar-font-color:    #737373 !default;
+
+   // ----------------------------------------
+   // -- .topbar-link
+   // ----------------------------------------
+      $topbar-link-color:       inherit           !default;
+      $topbar-link-hover-color: $link-hover-color !default;
+
+   // ----------------------------------------
+   // -- .topbar-dropdown
+   // ----------------------------------------
+      $topbar-dropdown-bg:                transparent                  !default;
+      $topbar-dropdown-font-color:        inherit                      !default;
+      $topbar-dropdown-value-color:       $link-color                  !default;
+      $topbar-dropdown-arrow-color:       #bfbfbf                      !default;
+      $topbar-dropdown-hover-bg:          #ebebeb                      !default;
+      $topbar-dropdown-hover-font-color:  $light-opposite-color        !default;
+      $topbar-dropdown-hover-value-color: $topbar-dropdown-value-color !default;
+      $topbar-dropdown-hover-arrow-color: #999                         !default;
+
+   // ----------------------------------------
+   // -- .search
+   // ----------------------------------------
+      $search-height:                         42px                                   !default;
+      $search-border-radius:                  3px                                    !default;
+      // input default
+      $search-input-default-bg:               transparent                            !default;
+      $search-input-default-shadow:           0 0 0 2px #e5e5e5 inset                !default;
+      $search-input-default-placeholder:      #999                                   !default;
+      $search-input-default-font-color:       inherit                                !default;
+      $search-input-default-icon-color:       #bfbfbf                                !default;
+      $search-input-default-icon-hover-color: $accent-color                          !default;
+      // input hover
+      $search-input-hover-bg:                 $search-input-default-bg               !default;
+      $search-input-hover-shadow:             0 0 0 2px #d4d4d4 inset                !default;
+      $search-input-hover-placeholder:        $search-input-default-placeholder      !default;
+      $search-input-hover-font-color:         $search-input-default-font-color       !default;
+      $search-input-hover-icon-color:         $search-input-default-icon-color       !default;
+      $search-input-hover-icon-hover-color:   $search-input-default-icon-hover-color !default;
+      // input hover
+      $search-input-focus-bg:                 $search-input-hover-bg                 !default;
+      $search-input-focus-shadow:             0 0 0 2px $accent-color inset          !default;
+      $search-input-focus-placeholder:        $search-input-hover-placeholder        !default;
+      $search-input-focus-font-color:         $search-input-hover-font-color         !default;
+      $search-input-focus-icon-color:         $search-input-hover-icon-color         !default;
+      $search-input-focus-icon-hover-color:   $search-input-hover-icon-hover-color   !default;
+
+   // ----------------------------------------
+   // -- .nav-panel, .mobile-header
+   // ----------------------------------------
+      $nav-panel-bg:           $accent-color                                                                   !default;
+      $nav-panel-shadow:       0 1px rgba(#000, .04), inset 0 -1px rgba(#000, .04)                             !default;
+      $nav-panel-stuck-shadow: 0 1px rgba(#000, .04), inset 0 -1px rgba(#000, .04), 0 1px 20px rgba(#000, .15) !default;
+      $nav-panel-font-color:   $accent-opposite-color                                                          !default;
+      $nav-panel-logo-color:   $nav-panel-font-color                                                           !default;
+      $nav-panel-height:       54px                                                                            !default;
+      $nav-panel-padding:      6px                                                                             !default;
+
+   // ----------------------------------------
+   // -- .departments
+   // ----------------------------------------
+      $departments-bg:            $dark-color                                !default;
+      $departments-shadow:        none                                       !default;
+      $departments-font-color:    $dark-opposite-color                       !default;
+      $departments-height:        $nav-panel-height - $nav-panel-padding * 2 !default;
+      $departments-icon-color:    white                                    !default;
+      $departments-arrow-color:   #98aab3                                    !default;
+      $departments-item-hover-bg: #525d66                                    !default;
+      $departments-font-weight:   $font-weight-normal                        !default;
+
+   // ----------------------------------------
+   // -- .nav-links
+   // ----------------------------------------
+      $nav-links-item-height:              $nav-panel-height - $nav-panel-padding * 2 !default;
+      $nav-links-item-border-radius:       2px                                        !default;
+      $nav-links-item-font-weight:         $font-weight-bold                          !default;
+      // default
+      $nav-links-item-default-bg:          transparent                                !default;
+      $nav-links-item-default-shadow:      none                                       !default;
+      $nav-links-item-default-font-color:  inherit                                    !default;
+      $nav-links-item-default-arrow-color: rgba(#000, .3)                             !default;
+      // hover
+      $nav-links-item-hover-bg:            rgba(#fff, .5)                             !default;
+      $nav-links-item-hover-shadow:        $nav-links-item-default-shadow             !default;
+      $nav-links-item-hover-font-color:    $nav-links-item-default-font-color         !default;
+      $nav-links-item-hover-arrow-color:   $nav-links-item-default-arrow-color        !default;
+
+   // ----------------------------------------
+   // -- .indicator
+   // ----------------------------------------
+      $indicator-height:                     $nav-links-item-height                !default;
+      $indicator-border-radius:              $nav-links-item-border-radius         !default;
+      // default
+      $indicator-default-bg:                 $nav-links-item-default-bg            !default;
+      $indicator-default-font-color:         $nav-links-item-default-shadow        !default;
+      $indicator-default-counter-bg:         $light-color                          !default;
+      $indicator-default-counter-font-color: $light-opposite-color                 !default;
+      // hover
+      $indicator-hover-bg:                   $nav-links-item-hover-bg              !default;
+      $indicator-hover-font-color:           $indicator-default-font-color         !default;
+      $indicator-hover-counter-bg:           $indicator-default-counter-bg         !default;
+      $indicator-hover-counter-font-color:   $indicator-default-counter-font-color !default;
+
+   // ----------------------------------------
+   // -- .drop-search
+   // ----------------------------------------
+      $drop-search-bg:                   $light-color               !default;
+      $drop-search-font-color:           $light-opposite-color      !default;
+      $drop-search-shadow:               0 1px 15px rgba(#000, .25) !default;
+      $drop-search-button-default-color: #bfbfbf                    !default;
+      $drop-search-button-hover-color:   $light-opposite-color      !default;
+
+   // ----------------------------------------
+   // -- .mobile-header
+   // ----------------------------------------
+      // menu button
+      $mobile-header-menu-button-border-radius:             2px                                                  !default;
+      $mobile-header-menu-button-default-bg:                transparent                                          !default;
+      $mobile-header-menu-button-default-color:             $nav-panel-font-color                                !default;
+      $mobile-header-menu-button-hover-bg:                  rgba(#fff, .5)                                       !default;
+      $mobile-header-menu-button-hover-color:               $mobile-header-menu-button-default-color             !default;
+      // search input default
+      $mobile-header-search-input-default-bg:               rgba(#fff, .5)                                       !default;
+      $mobile-header-search-input-default-shadow:           none                                                 !default;
+      $mobile-header-search-input-default-placeholder:      rgba(#000, .7)                                       !default;
+      $mobile-header-search-input-default-font-color:       inherit                                              !default;
+      $mobile-header-search-input-default-icon-color:       rgba(#000, .3)                                       !default;
+      $mobile-header-search-input-default-icon-hover-color: $accent-opposite-color                               !default;
+      // search input hover
+      $mobile-header-search-input-hover-bg:                 rgba(#fff, .8)                                       !default;
+      $mobile-header-search-input-hover-shadow:             $mobile-header-search-input-default-shadow           !default;
+      $mobile-header-search-input-hover-placeholder:        $mobile-header-search-input-default-placeholder      !default;
+      $mobile-header-search-input-hover-font-color:         $mobile-header-search-input-default-font-color       !default;
+      $mobile-header-search-input-hover-icon-color:         $mobile-header-search-input-default-icon-color       !default;
+      $mobile-header-search-input-hover-icon-hover-color:   $mobile-header-search-input-default-icon-hover-color !default;
+      // search input focus
+      $mobile-header-search-input-focus-bg:                 #fff                                                 !default;
+      $mobile-header-search-input-focus-shadow:             0 1px 5px rgba(#000, .2)                             !default;
+      $mobile-header-search-input-focus-placeholder:        #999                                                 !default;
+      $mobile-header-search-input-focus-font-color:         $mobile-header-search-input-hover-font-color         !default;
+      $mobile-header-search-input-focus-icon-color:         $mobile-header-search-input-hover-icon-color         !default;
+      $mobile-header-search-input-focus-icon-hover-color:   $mobile-header-search-input-hover-icon-hover-color   !default;
+
+      // ----------------------------------------
+      // -- offcanvas-search
+      // ----------------------------------------
+         $offcanvas-search-bg:                   #fff                      !default;
+         $offcanvas-search-shadow:               0 1px 7px rgba(#000, .25) !default;
+         $offcanvas-search-divider-color:        #ebebeb                   !default;
+         $offcanvas-search-placeholder-color:    #999                      !default;
+         $offcanvas-search-button-default-color: #b3b3b3                   !default;
+         $offcanvas-search-button-hover-color:   $light-opposite-color     !default;
+
+   // ----------------------------------------
+   // -- .mobilemenu
+   // ----------------------------------------
+      $mobilemenu-backdrop-bg:                $dark-color             !default;
+      $mobilemenu-bg:                         #fff                    !default;
+      $mobilemenu-shadow:                     0 0 20px rgba(#000, .4) !default;
+      $mobilemenu-divider-color:              #ebebeb                 !default;
+      $mobilemenu-header-height:              $nav-panel-height       !default;
+      $mobilemenu-font-color:                 $light-opposite-color   !default;
+      $mobilemenu-font-muted-color:           #999                    !default;
+      $mobilemenu-deep-links-bg:              #f7f7f7                 !default;
+      $mobilemenu-close-button-default-color: #999                    !default;
+      $mobilemenu-close-button-hover-color:   $light-opposite-color   !default;
+
+   // ----------------------------------------
+   // -- .dropcart
+   // ----------------------------------------
+      $dropcart-bg:               $light-color                !default;
+      $dropcart-shadow:           0 1px 15px rgba(#000, .25)  !default;
+      $dropcart-font-color:       $light-opposite-color       !default;
+      $dropcart-font-muted-color: $light-opposite-muted-color !default;
+      $dropcart-divider-color:    $light-divider-color        !default;
+
+   // ----------------------------------------
+   // -- .menu
+   // ----------------------------------------
+      $menu-bg:               $light-color               !default;
+      $menu-shadow:           0 1px 15px rgba(#000, .25) !default;
+      $menu-topbar-shadow:    0 1px 7px rgba(#000, .25)  !default;
+      $menu-font-color:       $light-opposite-color      !default;
+      $menu-item-hover-bg:    #f2f2f2                    !default;
+      $menu-item-arrow-color: #b3b3b3                    !default;
+
+   // ----------------------------------------
+   // -- .megamenu
+   // ----------------------------------------
+      $megamenu-bg:                   $light-color               !default;
+      $megamenu-shadow:               0 1px 15px rgba(#000, .25) !default;
+      $megamenu-font-color:           $light-opposite-color      !default;
+      $megamenu-divider-color:        #e5e5e5                    !default;
+      $megamenu-primary-link-color:   inherit                    !default;
+      $megamenu-secondary-link-color: #5c6b73                    !default;
+
+
+// ----------------------------------------
+// -- footer
+// ----------------------------------------
+   $footer-bg:                          transparent                    !default;
+   $footer-border-top:                  1px solid $light-divider-color !default;
+   $footer-copyright-border:            1px solid $light-divider-color !default;
+   // social links
+   $footer-social-link-icon-color:      #fff                           !default;
+   $footer-social-link-facebook-color:  #3c5a99                        !default;
+   $footer-social-link-twitter-color:   #00a2e8                        !default;
+   $footer-social-link-youtube-color:   #e52e2e                        !default;
+   $footer-social-link-instagram-color: #815dc7                        !default;
+   $footer-social-link-rss-color:       #ffc338                        !default;
+
+
+// ----------------------------------------
+// -- common
+// ----------------------------------------
+   // ----------------------------------------
+   // -- headers
+   // ----------------------------------------
+      $headers-font-family: null                 !default;
+      $headers-font-weight: $font-weight-bold    !default;
+      $headers-font-style:  null                 !default;
+      // h1
+      $h1-font-family:      $headers-font-family !default;
+      $h1-font-size:        36px                 !default;
+      $h1-font-weight:      $headers-font-weight !default;
+      $h1-font-style:       $headers-font-style  !default;
+      // h2
+      $h2-font-family:      $headers-font-family !default;
+      $h2-font-size:        32px                 !default;
+      $h2-font-weight:      $headers-font-weight !default;
+      $h2-font-style:       $headers-font-style  !default;
+      // h3
+      $h3-font-family:      $headers-font-family !default;
+      $h3-font-size:        28px                 !default;
+      $h3-font-weight:      $headers-font-weight !default;
+      $h3-font-style:       $headers-font-style  !default;
+      // h4
+      $h4-font-family:      $headers-font-family !default;
+      $h4-font-size:        24px                 !default;
+      $h4-font-weight:      $headers-font-weight !default;
+      $h4-font-style:       $headers-font-style  !default;
+      // h5
+      $h5-font-family:      $headers-font-family !default;
+      $h5-font-size:        20px                 !default;
+      $h5-font-weight:      $headers-font-weight !default;
+      $h5-font-style:       $headers-font-style  !default;
+      // h6
+      $h6-font-family:      $headers-font-family !default;
+      $h6-font-size:        16px                 !default;
+      $h6-font-weight:      $headers-font-weight !default;
+      $h6-font-style:       $headers-font-style  !default;
+
+   // ----------------------------------------
+   // -- table
+   // ----------------------------------------
+      $table-border-color:  #ebebeb !default;
+      $table-border-radius: 2.5px   !default;
+      $table-th-bg:         #f7f7f7 !default;
+
+   // ----------------------------------------
+   // -- price
+   // ----------------------------------------
+      $price-color:     $light-opposite-color !default;
+      $price-new-color: #ff2626               !default;
+      $price-old-color: #b3b3b3               !default;
+
+   // ----------------------------------------
+   // -- preloader
+   // ----------------------------------------
+      $preloader-thickness: 2px            !default;
+      $preloader-color-1:   rgba(#000, .1) !default;
+      $preloader-color-2:   rgba(#000, .5) !default;
+
+   // ----------------------------------------
+   // -- post-image-overlay
+   // ----------------------------------------
+      $post-image-overlay-bg: rgba(#000, .2) !default;
+
+
+
+// ----------------------------------------
+// -- components
+// ----------------------------------------
+   // ----------------------------------------
+   // -- .alert
+   // ----------------------------------------
+      $alert-link-default-bg:            rgba(#fff, .5)  !default;
+      $alert-link-hover-bg:              rgba(#fff, .85) !default;
+      $alert-link-active-bg:             rgba(#fff, .5)  !default;
+
+      $alert-close-button-default-bg:    transparent     !default;
+      $alert-close-button-default-color: rgba(#000, .3)  !default;
+      $alert-close-button-hover-bg:      rgba(#000, .08) !default;
+      $alert-close-button-hover-color:   rgba(#000, .5)  !default;
+
+      // primary
+      $alert-primary-bg:                 #b2d9ff         !default;
+      $alert-primary-font-color:         #36414d         !default;
+      // secondary
+      $alert-secondary-bg:               #d9d9d9         !default;
+      $alert-secondary-font-color:       #4d4d4d         !default;
+      // info
+      $alert-info-bg:                    #b8e2e5         !default;
+      $alert-info-font-color:            #2d3e40         !default;
+      // success
+      $alert-success-bg:                 #bde5a1         !default;
+      $alert-success-font-color:         #34402d         !default;
+      // danger
+      $alert-danger-bg:                  #ffb8b8         !default;
+      $alert-danger-font-color:          #473333         !default;
+      // warning
+      $alert-warning-bg:                 #f2e291         !default;
+      $alert-warning-font-color:         #4d472e         !default;
+
+   // ----------------------------------------
+   // -- .block-header
+   // ----------------------------------------
+      $block-header-divider-size:          2px                                       !default;
+      $block-header-divider-color:         #ebebeb                                   !default;
+
+      $block-header-filter-default-shadow: none                                      !default;
+      $block-header-filter-hover-shadow:   0 0 0 2px #ebebeb inset                   !default;
+      $block-header-filter-active-shadow:  0 0 0 2px $accent-color inset             !default;
+
+      $block-header-arrow-default-bg:      #f2f2f2                                   !default;
+      $block-header-arrow-default-color:   #999                                      !default;
+      $block-header-arrow-hover-bg:        $accent-color                             !default;
+      $block-header-arrow-hover-color:     $accent-opposite-color                    !default;
+      $block-header-arrow-active-bg:       lighten($block-header-arrow-hover-bg, 8%) !default;
+      $block-header-arrow-active-color:    $block-header-arrow-hover-color           !default;
+
+   // ----------------------------------------
+   // -- .breadcrumb
+   // ----------------------------------------
+      $breadcrumb-link-default-color: inherit                !default;
+      $breadcrumb-link-hover-color:   $link-hover-color      !default;
+      $breadcrumb-link-active-color:  $body-font-muted-color !default;
+      $breadcrumb-arrow-color:        #d1d1d1                !default;
+
+   // ----------------------------------------
+   // -- .btn
+   // ----------------------------------------
+      // primary
+         // default
+         $btn-primary-bg-color:          $accent-color                 !default;
+         $btn-primary-font-color:        $accent-opposite-color        !default;
+         $btn-primary-icon-color:        $btn-primary-font-color       !default;
+         // hover
+         $btn-primary-hover-bg-color:    $dark-color                   !default;
+         $btn-primary-hover-font-color:  $dark-opposite-color          !default;
+         $btn-primary-hover-icon-color:  $btn-primary-hover-font-color !default;
+         // active
+         $btn-primary-active-bg-color:   lighten($dark-color, 10%)     !default;
+         $btn-primary-active-font-color: $btn-primary-hover-font-color !default;
+         $btn-primary-active-icon-color: $btn-primary-hover-icon-color !default;
+      // secondary
+         // default
+         $btn-secondary-bg-color:          #f0f0f0                         !default;
+         $btn-secondary-font-color:        $light-opposite-color           !default;
+         $btn-secondary-icon-color:        $btn-secondary-font-color       !default;
+         // hover
+         $btn-secondary-hover-bg-color:    $dark-color                     !default;
+         $btn-secondary-hover-font-color:  $dark-opposite-color            !default;
+         $btn-secondary-hover-icon-color:  $btn-secondary-hover-font-color !default;
+         // active
+         $btn-secondary-active-bg-color:   lighten($dark-color, 10%)       !default;
+         $btn-secondary-active-font-color: $btn-secondary-hover-font-color !default;
+         $btn-secondary-active-icon-color: $btn-secondary-hover-icon-color !default;
+      // light
+         // default
+         $btn-light-bg-color:          transparent                 !default;
+         $btn-light-font-color:        $light-opposite-color       !default;
+         $btn-light-icon-color:        #ccc                        !default;
+         // hover
+         $btn-light-hover-bg-color:    #f0f0f0                     !default;
+         $btn-light-hover-font-color:  $light-opposite-color       !default;
+         $btn-light-hover-icon-color:  $btn-light-hover-font-color !default;
+         // active
+         $btn-light-active-bg-color:   #e5e5e5                     !default;
+         $btn-light-active-font-color: $btn-light-hover-font-color !default;
+         $btn-light-active-icon-color: $btn-light-hover-icon-color !default;
+
+   // ----------------------------------------
+   // -- .card
+   // ----------------------------------------
+      $card-border-width:     2px                                         !default;
+      $card-border-color:     #f0f0f0                                     !default;
+      $card-border-radius:    2px                                         !default;
+      $card-border:           $card-border-width solid $card-border-color !default;
+      $card-divider-color:    $light-divider-color                        !default;
+      $card-font-muted-color: $light-opposite-muted-color                 !default;
+
+   // ----------------------------------------
+   // -- .form-control
+   // ----------------------------------------
+      $form-control-select-arrow-color: #4d4d4d !default;
+
+   // ----------------------------------------
+   // -- .input-check
+   // ----------------------------------------
+      // normal
+      $input-check-box-bg:              #fff                            !default;
+      $input-check-box-shadow:          0 0 0 1px rgba(#000, .15) inset !default;
+      $input-check-icon-color:          #fff                            !default;
+      // checked
+      $input-check-checked-box-bg:      $accent-color                   !default;
+      $input-check-checked-box-shadow:  0 0 0 1px rgba(#000, .05) inset !default;
+      $input-check-checked-icon-color:  $accent-opposite-color          !default;
+      // disabled
+      $input-check-disabled-box-bg:     #f2f2f2                         !default;
+      $input-check-disabled-box-shadow: 0 0 0 1px rgba(#000, .1) inset  !default;
+      $input-check-disabled-icon-color: rgba(#000, .2)                  !default;
+
+   // ----------------------------------------
+   // -- .input-check-color
+   // ----------------------------------------
+      $input-check-color-stick-color:       rgba(#666, .9)          !default;
+      $input-check-color-arrow-light-color: #fff                    !default;
+      $input-check-color-arrow-dark-color:  #3d464d                 !default;
+      $input-check-color-white-shadow:      0 0 0 2px #d9d9d9 inset !default;
+      $input-check-color-white-arrow-color: #bfbfbf                 !default;
+
+   // ----------------------------------------
+   // -- .input-radio
+   // ----------------------------------------
+      // normal
+      $input-radio-circle-bg:                   #fff                            !default;
+      $input-radio-circle-shadow:               0 0 0 1px rgba(#000, .17) inset !default;
+      $input-radio-inner-circle-color:          #fff                            !default;
+      // checked
+      $input-radio-checked-circle-bg:           $accent-color                   !default;
+      $input-radio-checked-circle-shadow:       0 0 0 1px rgba(#000, .08) inset !default;
+      $input-radio-checked-inner-circle-color:  $accent-opposite-color          !default;
+      // disabled
+      $input-radio-disabled-circle-bg:          #f2f2f2                         !default;
+      $input-radio-disabled-circle-shadow:      0 0 0 1px rgba(#000, .12) inset !default;
+      $input-radio-disabled-inner-circle-color: rgba(#000, .2)                  !default;
+
+   // ----------------------------------------
+   // -- .input-radio-color
+   // ----------------------------------------
+      $input-radio-color-stick-color:        rgba(#000, .3) !default;
+      $input-radio-color-white-border-color: #ccc           !default;
+      $input-radio-color-inner-circle-color: #fff           !default;
+
+   // ----------------------------------------
+   // -- .input-radio-label
+   // ----------------------------------------
+      $input-radio-label-default-bg:         #f0f0f0                               !default;
+      $input-radio-label-default-font-color: $light-opposite-color                 !default;
+      $input-radio-label-hover-bg:           #e0e0e0                               !default;
+      $input-radio-label-hover-font-color:   $input-radio-label-default-font-color !default;
+      $input-radio-label-active-bg:          $accent-color                         !default;
+      $input-radio-label-active-font-color:  $accent-opposite-color                !default;
+
+   // ----------------------------------------
+   // -- .layout-switcher
+   // ----------------------------------------
+      // default
+      $layout-switcher-default-bg:           $light-color                          !default;
+      $layout-switcher-default-border-color: #e5e5e5                               !default;
+      $layout-switcher-default-color:        #a1abb3                               !default;
+      // hover
+      $layout-switcher-hover-bg:             #f2f2f2                               !default;
+      $layout-switcher-hover-border-color:   $layout-switcher-default-border-color !default;
+      $layout-switcher-hover-color:          $light-opposite-color                 !default;
+      // active
+      $layout-switcher-active-bg:            $accent-color                         !default;
+      $layout-switcher-active-border-color:  $accent-color                         !default;
+      $layout-switcher-active-color:         $accent-opposite-color                !default;
+
+   // ----------------------------------------
+   // -- .filters-button
+   // ----------------------------------------
+      $filters-button-icon-color:            $dark-color                           !default;
+      $filters-button-counter-bg:            $accent-color                         !default;
+      $filters-button-counter-font-color:    $accent-opposite-color                !default;
+      // default
+      $filters-button-default-bg:            $light-color                          !default;
+      $filters-button-default-border-color:  #e5e5e5                               !default;
+      // hover
+      $filters-button-hover-bg:              #f5f5f5                               !default;
+      $filters-button-hover-border-color:    $filters-button-default-border-color  !default;
+
+   // ----------------------------------------
+   // -- .modal
+   // ----------------------------------------
+      $modal-border-radius: 2px                                                   !default;
+      $modal-shadow:        0 1px 20px rgba(#000, .15), 0 1px 3px rgba(#000, .15) !default;
+
+   // ----------------------------------------
+   // -- .nouislider
+   // ----------------------------------------
+      $nouislider-bg-color:      #e0e0e0                !default;
+      $nouislider-connect-color: $accent-color          !default;
+      $nouislider-border-color:  $accent-opposite-color !default;
+      $nouislider-handle-color:  $accent-color          !default;
+
+   // ----------------------------------------
+   // -- .pagination
+   // ----------------------------------------
+      // default
+      $pagination-bg:                  transparent            !default;
+      $pagination-font-color:          $body-font-color       !default;
+      // disabled
+      $pagination-disabled-bg:         transparent            !default;
+      $pagination-disabled-font-color: #b3b3b3                !default;
+      // hover
+      $pagination-hover-bg:            #ebebeb                !default;
+      $pagination-hover-font-color:    $pagination-font-color !default;
+      // current
+      $pagination-current-bg:          $accent-color          !default;
+      $pagination-current-font-color:  $accent-opposite-color !default;
+
+   // ----------------------------------------
+   // -- .post-card
+   // ----------------------------------------
+      $post-card-meta-font-color: #adadad !default;
+
+   // ----------------------------------------
+   // -- .product-card
+   // ----------------------------------------
+      $product-card-bg:                      #fff                                     !default;
+      $product-card-border-radius:           2px                                      !default;
+      $product-card-divider-color:           #ebebeb                                  !default;
+      $product-card-font-alt-color:          $light-opposite-alt-color                !default;
+      $product-card-font-muted-color:        $light-opposite-muted-color              !default;
+
+      $product-card-default-shadow:          0 0 0 1px #ededed inset                  !default;
+      $product-card-hover-shadow:            0 0 0 2px rgba($accent-color, .7) inset  !default;
+
+      $product-card-badge-sale-bg:           #ff3333                                  !default;
+      $product-card-badge-sale-color:        #fff                                     !default;
+      $product-card-badge-new-bg:            #3377ff                                  !default;
+      $product-card-badge-new-color:         #fff                                     !default;
+      $product-card-badge-hot-bg:            #614ba6                                  !default;
+      $product-card-badge-hot-color:         #fff                                     !default;
+
+      $product-card-quickview-color:         #ccc                                     !default;
+      $product-card-quickview-default-bg:    $accent-color                            !default;
+      $product-card-quickview-default-color: $accent-opposite-color                   !default;
+      $product-card-quickview-hover-bg:      $dark-color                              !default;
+      $product-card-quickview-hover-color:   $dark-opposite-color                     !default;
+
+   // ----------------------------------------
+   // -- .rating
+   // ----------------------------------------
+      $rating-legend-font-color:         #b3b3b3                           !default;
+      $rating-star-default-color:        #ccc                              !default;
+      $rating-star-default-stroke-color: rgba(#000, .08)                   !default;
+      $rating-star-active-color:         #ffd333                           !default;
+      $rating-star-active-stroke-color:  $rating-star-default-stroke-color !default;
+
+   // ----------------------------------------
+   // -- .share-links
+   // ----------------------------------------
+      $share-links-font-color:     #fff                           !default;
+      $share-links-like-color:     #4267b2                        !default;
+      $share-links-tweet-color:    #1b95e0                        !default;
+      $share-links-pin-color:      #e63939                        !default;
+      $share-links-counter-color:  #737373                        !default;
+      $share-links-counter-shadow: inset 0 0 0 1px rgba(#000, .2) !default;
+
+   // ----------------------------------------
+   // -- .tags
+   // ----------------------------------------
+      $tags-border-radius:      1.5px                   !default;
+      // default
+      $tags-default-bg:         transparent             !default;
+      $tags-default-border:     1px solid #e5e5e5       !default;
+      $tags-default-font-color: $light-opposite-color   !default;
+      // hover
+      $tags-hover-bg:           $accent-color           !default;
+      $tags-hover-border:       1px solid $accent-color !default;
+      $tags-hover-font-color:   $accent-opposite-color  !default;
+
+   // ----------------------------------------
+   // -- .tooltip
+   // ----------------------------------------
+      $tooltip-color:      $dark-color          !default;
+      $tooltip-font-color: $dark-opposite-color !default;
+
+   // ----------------------------------------
+   // -- .typography
+   // ----------------------------------------
+      $typography-figcaption-color: #999 !default;
+      $typography-hr-color:         #ccc !default;
+      $typography-cite-color:       #999 !default;
+
+
+// ----------------------------------------
+// -- shop
+// ----------------------------------------
+   // ----------------------------------------
+   // -- .cart
+   // ----------------------------------------
+      $cart-divider-color: $light-divider-color !default;
+
+   // ----------------------------------------
+   // -- .cart-table
+   // ----------------------------------------
+      $cart-table-card-border-color:  $light-divider-color        !default;
+      $cart-table-options-font-color: $light-opposite-muted-color !default;
+
+   // ----------------------------------------
+   // -- .category-card
+   // ----------------------------------------
+      $category-card-bg:                 #fff                        !default;
+      $category-card-shadow:             0 1px 16px rgba(#000, .04)  !default;
+      $category-card-links-font-color:   $light-opposite-alt-color   !default;
+      $category-card-counter-font-color: $light-opposite-muted-color !default;
+
+   // ----------------------------------------
+   // -- .product-gallery
+   // ----------------------------------------
+      $product-gallery-item-border-radius:  2px                           !default;
+      $product-gallery-item-default-shadow: 0 0 0 2px #f2f2f2 inset       !default;
+      $product-gallery-item-active-shadow:  0 0 0 2px $accent-color inset !default;
+
+   // ----------------------------------------
+   // -- .product-tabs
+   // ----------------------------------------
+      $product-tabs-border-width:        $card-border-width                                          !default;
+      $product-tabs-border-color:        $card-border-color                                          !default;
+      $product-tabs-border-radius:       $card-border-radius                                         !default;
+      $product-tabs-border:              $product-tabs-border-width solid $product-tabs-border-color !default;
+      $product-tabs-hover-bg:            #f7f7f7                                                     !default;
+      $product-tabs-hover-border-color:  #d9d9d9                                                     !default;
+      $product-tabs-active-border-color: $accent-color                                               !default;
+
+   // ----------------------------------------
+   // -- .quickview
+   // ----------------------------------------
+      $quickview-bg:                  #fff    !default;
+      $quickview-close-default-color: #bfbfbf !default;
+      $quickview-close-hover-color:   #808080 !default;
+
+   // ----------------------------------------
+   // -- .wishlist
+   // ----------------------------------------
+      $wishlist-divider-color: $light-divider-color !default;
+
+
+// ----------------------------------------
+// -- other
+// ----------------------------------------
+   // ----------------------------------------
+   // -- .post
+   // ----------------------------------------
+      $post-categories-bg:            #ebebeb !default;
+      $post-categories-border-radius: 1.5px   !default;
+      $post-categories-font-color:    #808080 !default;
+      $post-meta-font-color:          #b2b2b2 !default;
+      $post-section-divider-color:    #ebebeb !default;
+
+   // ----------------------------------------
+   // -- .payment-methods
+   // ----------------------------------------
+      $payment-methods-border-radius:  2px                           !default;
+      $payment-methods-default-bg:     transparent                   !default;
+      $payment-methods-default-border: 1px solid #e5e5e5             !default;
+      $payment-methods-hover-bg:       #f7f7f7                       !default;
+      $payment-methods-hover-border:   1px solid #e5e5e5             !default;
+      $payment-methods-active-bg:      $payment-methods-hover-bg     !default;
+      $payment-methods-active-border:  $payment-methods-hover-border !default;
+
+   // ----------------------------------------
+   // -- .teammates
+   // ----------------------------------------
+      $teammates-dot-default-color: #e5e5e5       !default;
+      $teammates-dot-hover-color:   #ccc          !default;
+      $teammates-dot-active-color:  $accent-color !default;
+
+   // ----------------------------------------
+   // -- .filter
+   // ----------------------------------------
+      // default
+      $filter-title-default-bg:          transparent !default;
+      $filter-title-default-arrow-color: #ccc        !default;
+      // hover
+      $filter-title-hover-bg:            #f2f2f2     !default;
+      $filter-title-hover-arrow-color:   #b3b3b3     !default;
+
+
+// ----------------------------------------
+// -- blocks
+// ----------------------------------------
+   // ----------------------------------------
+   // -- .block
+   // ----------------------------------------
+      $block-margin-bottom:    46px    !default;
+      $block-margin-bottom-md: 30px    !default;
+      $block-highlighted-bg:   #f9f9f9 !default;
+
+   // ----------------------------------------
+   // -- .block-features
+   // ----------------------------------------
+      $block-features-icon-color: $accent-color !default;
+      $block-features-boxed-bg:   #f7f7f7       !default;
+
+   // ----------------------------------------
+   // -- .block-map
+   // ----------------------------------------
+      $block-map-top-bg:    linear-gradient(to bottom, rgba(#000, .15), rgba(#000, 0)) !default;
+      $block-map-bottom-bg: linear-gradient(to top, rgba(#000, .05), rgba(#000, 0))    !default;
+
+   // ----------------------------------------
+   // -- .block-products-carousel
+   // ----------------------------------------
+      $block-products-carousel-preloader-bg: rgba(#fff, .9) !default;
+
+   // ----------------------------------------
+   // -- .block-slideshow
+   // ----------------------------------------
+      $block-slideshow-dots-bg:           #fff          !default;
+      $block-slideshow-dot-default-color: #e0e0e0       !default;
+      $block-slideshow-dot-hover-color:   #d1d1d1       !default;
+      $block-slideshow-dot-active-color:  $accent-color !default;
+
+
+// ----------------------------------------
+// -- widgets
+// ----------------------------------------
+   $widget-shop-padding: 20px !default;
+   $widget-blog-padding: 28px !default;
+
+   // ----------------------------------------
+   // -- .widget-aboutus
+   // ----------------------------------------
+      $widget-aboutus-social-link-font-color: #fff    !default;
+      $widget-aboutus-facebook-color:         #3c5a99 !default;
+      $widget-aboutus-twitter-color:          #00a2e8 !default;
+      $widget-aboutus-youtube-color:          #e52e2e !default;
+      $widget-aboutus-instagram-color:        #815dc7 !default;
+      $widget-aboutus-rss-color:              #ffc338 !default;
+
+   // ----------------------------------------
+   // -- .widget-categories
+   // ----------------------------------------
+      $widget-categories-arrow-color:                 #ccc        !default;
+      $widget-categories-circle-color:                #ccc        !default;
+      // expander
+      $widget-categories-expander-default-bg:         transparent !default;
+      $widget-categories-expander-default-font-color: #ccc        !default;
+      $widget-categories-expander-hover-bg:           #f2f2f2     !default;
+      $widget-categories-expander-hover-font-color:   #a6a6a6     !default;
+
+   // ----------------------------------------
+   // -- .widget-newsletter
+   // ----------------------------------------
+      $widget-newsletter-bg: #f5f5f5 !default;
+
+   // ----------------------------------------
+   // -- .widget-search
+   // ----------------------------------------
+      $widget-search-input-placeholder:    $light-opposite-muted-color   !default;
+      $widget-search-input-default-shadow: 0 0 0 2px #ededed inset       !default;
+      $widget-search-input-hover-shadow:   0 0 0 2px #d9d9d9 inset       !default;
+      $widget-search-input-focus-shadow:   0 0 0 2px $accent-color inset !default;
+      // button default
+      $widget-search-button-default-color: #ccc                          !default;
+      $widget-search-button-hover-color:   $accent-color                 !default;

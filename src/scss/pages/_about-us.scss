@@ -1,0 +1,160 @@
+/*
+// .about-us
+*/
+@import '../variables';
+@import '../functions';
+@import '../mixins/direction';
+
+
+.about-us {}
+.about-us__image {
+    background-size: cover;
+    background-position: bottom center;
+    height: 500px;
+}
+.about-us__body {
+    background: $body-bg;
+    min-height: 380px;
+    margin-top: -380px;
+    border-radius: 4px 4px 0 0;
+    padding: 75px 92px 45px;
+}
+.about-us__title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+.about-us__text {
+    text-align: center;
+}
+.about-us__team {
+    margin-top: 75px;
+    text-align: center;
+}
+.about-us__team-subtitle {
+    margin-top: 24px;
+}
+.about-us__teammates {
+    margin-top: 42px;
+}
+
+.teammates {
+    $local-dot-size: 12px;
+
+    .slick-dots {
+        width: auto;
+        position: static;
+        padding: 0;
+        font-size: 0;
+        list-style: none;
+        margin: 20px 0 0;
+
+        li {
+            display: inline-block;
+            padding: 6px;
+        }
+
+        button {
+            width: $local-dot-size;
+            height: $local-dot-size;
+            padding: 0;
+            border: none;
+            border-radius: $local-dot-size / 2;
+            background: $block-slideshow-dot-default-color;
+
+            &:focus {
+                outline: none;
+            }
+
+            &:hover {
+                background: $block-slideshow-dot-hover-color;
+            }
+        }
+        .slick-active button {
+            background: $block-slideshow-dot-active-color;
+        }
+    }
+
+    @media (min-width: breakpoint(lg-start)) {
+        .slick-list {
+            margin: 0 -16px;
+        }
+        .slick-slide {
+            padding: 0 16px;
+        }
+    }
+    @media (min-width: 380px) and (max-width: breakpoint(md-end)) {
+        .slick-list {
+            margin: 0 -12px;
+        }
+        .slick-slide {
+            padding: 0 12px;
+        }
+    }
+}
+
+.teammate {
+    vertical-align: middle;
+}
+.teammate__avatar {
+    img {
+        max-width: 100%;
+        border-radius: 2px;
+    }
+}
+.teammate__name {
+    font-size: 18px;
+    font-weight: $font-weight-medium;
+    margin-top: 16px;
+}
+.teammate__position {
+    font-size: 14px;
+}
+
+
+
+@media (max-width: breakpoint(md-end)) and (min-width: breakpoint(md-start)) {
+    .about-us__image {
+        height: 460px;
+    }
+    .about-us__title {
+        margin-bottom: 36px;
+    }
+    .about-us__body {
+        padding: 50px;
+    }
+    .about-us__team {
+        margin-top: 75px;
+    }
+}
+@media (max-width: breakpoint(sm-end)) and (min-width: breakpoint(sm-start)) {
+    .about-us__image {
+        height: 360px;
+    }
+    .about-us__title {
+        margin-bottom: 24px;
+    }
+    .about-us__body {
+        min-height: 290px;
+        margin-top: -290px;
+        padding: 40px;
+    }
+    .about-us__team {
+        margin-top: 50px;
+    }
+}
+@media (max-width: breakpoint(sm-end)) {
+    .about-us__image {
+        height: 330px;
+    }
+    .about-us__body {
+        min-height: 290px;
+        margin-top: -290px;
+        padding: 30px 24px;
+    }
+    .about-us__title {
+        margin-bottom: 20px;
+    }
+    .about-us__team {
+        margin-top: 50px;
+    }
+}

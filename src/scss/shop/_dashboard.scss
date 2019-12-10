@@ -1,0 +1,33 @@
+/*
+// .dashboard
+*/
+@import '../variables';
+@import '../functions';
+
+
+.dashboard {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.dashboard__orders {
+    margin-top: 24px;
+    width: 100%;
+}
+
+
+@media (min-width: breakpoint(md-start)) {
+    .dashboard__profile,
+    .dashboard__address {
+        width: calc(50% - 12px);
+    }
+}
+@media (max-width: breakpoint(sm-end)) {
+    .dashboard__profile,
+    .dashboard__address {
+        width: 100%;
+    }
+    .dashboard__address {
+        margin-top: 24px;
+    }
+}

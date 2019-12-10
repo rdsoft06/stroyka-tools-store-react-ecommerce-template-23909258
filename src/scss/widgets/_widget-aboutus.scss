@@ -1,0 +1,62 @@
+/*
+// .widget-aboutus
+*/
+@import '../variables';
+@import '../mixins/card';
+
+
+.widget-aboutus {
+    @include card();
+
+    padding: 28px;
+
+    @media (max-width: 479px) {
+        padding: 20px;
+    }
+}
+.widget-aboutus__socials {
+    margin-top: 20px;
+    font-size: 16px;
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: -4px;
+        display: flex;
+    }
+
+    li {
+        margin: 4px;
+    }
+}
+.widget-aboutus__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 2px;
+    transition: all .2s;
+    color: $widget-aboutus-social-link-font-color;
+
+    &:hover {
+        color: $widget-aboutus-social-link-font-color;
+        opacity: .8;
+    }
+}
+
+.widget-aboutus__link--facebook {
+    background: $widget-aboutus-facebook-color;
+}
+.widget-aboutus__link--twitter {
+    background: $widget-aboutus-twitter-color;
+}
+.widget-aboutus__link--youtube {
+    background: $widget-aboutus-youtube-color;
+}
+.widget-aboutus__link--instagram {
+    background: $widget-aboutus-instagram-color;
+}
+.widget-aboutus__link--rss {
+    background: $widget-aboutus-rss-color;
+}

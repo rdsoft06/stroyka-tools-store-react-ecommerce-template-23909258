@@ -1,0 +1,14 @@
+/*
+// .topbar-link
+*/
+@import '../variables';
+
+
+.topbar-link {
+    color: $topbar-link-color;
+    transition: color .3s;
+
+    &:hover {
+        color: $topbar-link-hover-color;
+    }
+}

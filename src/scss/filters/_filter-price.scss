@@ -1,0 +1,15 @@
+/*
+// .filter-price
+*/
+@import '../variables';
+
+
+.filter-price {}
+.filter-price__slider {
+    margin-top: 6px;
+}
+.filter-price__title {
+    margin-top: 16px;
+    font-size: 14px;
+    color: $card-font-muted-color;
+}

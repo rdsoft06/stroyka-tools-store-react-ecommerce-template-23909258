@@ -1,0 +1,39 @@
+/*
+// .faq
+*/
+@import '../variables';
+@import '../functions';
+
+
+.faq {}
+.faq__section {
+    & + & {
+        margin-top: 70px;
+    }
+}
+.faq__section-title {
+    margin-bottom: 20px;
+
+    h3 {
+        font-size: 22px;
+        font-weight: $font-weight-medium;
+    }
+}
+.faq__section-body {
+    border: $card-border;
+    border-radius: $card-border-radius;
+    padding: 48px 44px;
+}
+
+
+@media (max-width: breakpoint(md-end)) {
+    .faq__section + .faq__section {
+        margin-top: 40px;
+    }
+    .faq__section-body {
+        padding: 28px 24px;
+    }
+    .faq__section-column + .faq__section-column {
+        margin-top: 1.5em;
+    }
+}

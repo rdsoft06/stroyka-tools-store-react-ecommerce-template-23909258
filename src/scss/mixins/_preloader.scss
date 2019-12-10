@@ -1,0 +1,39 @@
+@import '../variables';
+
+
+@mixin preloader-animation() {
+    @keyframes preloader-animation {
+        from {
+            transform: rotateZ(0deg);
+        }
+        to {
+            transform: rotateZ(360deg);
+        }
+    }
+}
+
+@mixin preloader-size($size) {
+    left: calc(50% - #{$size / 2});
+    top: calc(50% - #{$size / 2});
+    width: $size;
+    height: $size;
+    border-radius: $size / 2;
+}
+
+
+@mixin preloader($size: null, $thickness: $preloader-thickness, $color-1: $preloader-color-1, $color-2: $preloader-color-2) {
+    display: block;
+    content: '';
+    position: absolute;
+    border: $thickness solid $color-1;
+    border-top-color: $color-2;
+    transition: border-color .1s;
+    animation-name: preloader-animation;
+    animation-duration: .5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+
+    @if ($size != null) {
+        @include preloader-size($size);
+    }
+}

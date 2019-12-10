@@ -1,0 +1,37 @@
+/*
+// .footer-links
+*/
+@import '../variables';
+@import '../functions';
+
+
+.footer-links {}
+.footer-links__title {
+    margin-bottom: 22px;
+}
+.footer-links__list {
+    font-size: 15px;
+    line-height: 28px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    a {
+        color: inherit;
+        transition: .15s;
+    }
+    a:hover {
+        color: $link-hover-color;
+    }
+}
+
+
+@media (max-width: breakpoint(sm-end)) {
+    .footer-links__title {
+        margin-bottom: 12px;
+    }
+    .footer-links {
+        margin-top: 42px;
+        text-align: center;
+    }
+}

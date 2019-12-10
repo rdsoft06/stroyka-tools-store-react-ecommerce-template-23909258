@@ -1,0 +1,73 @@
+/*
+// .site-header
+*/
+@import '../variables';
+@import '../functions';
+@import '../mixins/direction';
+
+
+.site-header {
+    position: relative;
+    z-index: 100;
+    background: $header-bg;
+    color: $header-font-color;
+}
+.site-header__middle {
+    display: flex;
+    align-items: center;
+    height: 104px;
+}
+.site-header__logo {
+    width: 255px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $header-logo-color;
+
+    @include direction {
+        #{$margin-inline-end}: 30px;
+    }
+
+    a {
+        color: inherit;
+    }
+
+    svg {
+        fill: currentColor;
+    }
+}
+.site-header__search {
+    flex-grow: 1;
+}
+.site-header__phone {
+    line-height: 1;
+
+    @include direction {
+        text-align: $inline-end;
+        #{$margin-inline-start}: 80px;
+    }
+}
+.site-header__phone-title {
+    font-size: 14px;
+    color: $header-font-muted-color;
+    margin-bottom: 6px;
+}
+.site-header__phone-number {
+    font-size: 20px;
+    font-weight: $font-weight-bold;
+}
+.site-header__nav-panel {
+    height: $nav-panel-height;
+}
+
+
+@media (min-width: breakpoint(lg-start)) and (max-width: breakpoint(lg-end)) {
+    .site-header__logo {
+        width: 210px;
+        justify-content: flex-start;
+
+        @include direction {
+            #{$margin-inline-end}: 24px;
+        }
+    }
+}

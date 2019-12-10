@@ -1,0 +1,27 @@
+/*
+// .widget-newsletter
+*/
+@import '../variables';
+
+
+.widget-newsletter {
+    background: $widget-newsletter-bg;
+    border-radius: 2px;
+    padding: 32px 30px 36px;
+    text-align: center;
+    font-size: 15px;
+    line-height: 24px;
+}
+.widget-newsletter__title {
+    font-size: 24px;
+    padding-top: 6px;
+    margin-bottom: 24px;
+}
+.widget-newsletter__text {
+    margin-bottom: 22px;
+
+}
+.widget-newsletter__form {
+    display: flex;
+    flex-direction: column;
+}

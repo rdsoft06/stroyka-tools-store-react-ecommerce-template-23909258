@@ -1,0 +1,137 @@
+/*
+// .cart
+*/
+@import '../variables';
+@import '../functions';
+@import '../mixins/buttons';
+@import '../mixins/direction';
+
+
+.cart {}
+.cart__actions {
+    margin-top: 1.75rem;
+    display: flex;
+    justify-content: space-between;
+}
+.cart__coupon-form {
+    width: calc(50% - 15px);
+    display: flex;
+
+    .btn {
+        flex-shrink: 0;
+
+        @include direction {
+            #{$margin-inline-start}: .5rem;
+        }
+    }
+}
+.cart__buttons {
+    width: calc(50% - 15px);
+    display: flex;
+    justify-content: flex-end;
+}
+.cart__update-button {
+    @include direction {
+        #{$margin-inline-start}: .5rem;
+    }
+}
+.cart__totals {
+    font-size: 16px;
+    line-height: 20px;
+    width: 100%;
+    margin-bottom: 40px;
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    th, td {
+        vertical-align: top;
+        padding: 6px 0;
+    }
+
+    th {
+        font-weight: $font-weight-bold;
+    }
+
+    tr > :first-child {
+        @include direction {
+            #{$padding-inline-end}: 20px;
+        }
+    }
+
+    tr > :last-child {
+        @include direction {
+            text-align: $inline-end;
+        }
+    }
+}
+.cart__totals-header {
+    tr:last-child > * {
+        padding-bottom: 10px;
+    }
+}
+.cart__totals-body {
+    tr:first-child > * {
+        padding-top: 20px;
+        border-top: 1px solid $cart-divider-color;
+    }
+    tr:last-child > * {
+        padding-bottom: 20px;
+        border-bottom: 1px solid $cart-divider-color;
+    }
+}
+.cart__totals-footer {
+    font-size: 24px;
+
+    th {
+        font-weight: $font-weight-medium;
+    }
+
+    tr:first-child > * {
+        padding-top: 20px;
+    }
+}
+.cart__calc-shipping {
+    margin-top: 2px;
+    font-size: 15px;
+}
+
+
+@media (min-width: breakpoint(md-start)) and (max-width: breakpoint(md-end)) {
+    .cart__actions {
+        margin-top: 1.5rem;
+    }
+}
+@media (max-width: breakpoint(sm-end)) {
+    .cart__actions {
+        margin-top: 1.5rem;
+        display: block;
+    }
+    .cart__coupon-form {
+        width: 100%;
+    }
+    .cart__buttons {
+        flex-direction: column;
+        margin-top: 1.75rem;
+        width: 100%;
+    }
+    .cart__update-button {
+        order: -1;
+        margin-bottom: .75rem;
+
+        @include direction {
+            #{$margin-inline-start}: 0;
+        }
+    }
+}
+@media (max-width: 479px) {
+    .cart__checkout-button {
+        @include btn-lg();
+    }
+}
+@media (max-width: 379px) {
+    .cart__checkout-button {
+        @include btn-nl();
+    }
+}

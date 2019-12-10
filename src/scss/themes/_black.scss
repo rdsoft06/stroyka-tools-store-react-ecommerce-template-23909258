@@ -1,0 +1,58 @@
+// colors
+$accent-color:          #333 !default;
+$accent-opposite-color: #fff !default;
+$light-opposite-color:  #333 !default;
+
+
+// .topbar
+$topbar-bg:                transparent       !default;
+$topbar-height:            34px              !default;
+$topbar-border-bottom:     1px solid #ebebeb !default;
+$topbar-font-color:        #8c8c8c           !default;
+$topbar-dropdown-hover-bg: #f2f2f2           !default;
+
+
+// .departments
+$departments-icon-color:    rgba(#fff, .2)  !default;
+$departments-arrow-color:   rgba(#fff, .2)  !default;
+$departments-item-hover-bg: rgba(#fff, .08) !default;
+
+
+// .nav-links
+$nav-links-item-font-weight:         400             !default;
+$nav-links-item-default-arrow-color: rgba(#fff, .2)  !default;
+$nav-links-item-hover-bg:            rgba(#fff, .08) !default;
+
+
+// .mobile-header
+$mobile-header-menu-button-hover-bg:                  $nav-links-item-hover-bg !default;
+// search input default
+$mobile-header-search-input-default-bg:               rgba(#fff, .1)           !default;
+$mobile-header-search-input-default-placeholder:      rgba(#fff, .7)           !default;
+$mobile-header-search-input-default-icon-color:       rgba(#fff, .7)           !default;
+$mobile-header-search-input-default-icon-hover-color: #fff                     !default;
+// search input hover
+$mobile-header-search-input-hover-bg:                 rgba(#fff, .15)          !default;
+// search input focus
+$mobile-header-search-input-focus-bg:                 #fff                     !default;
+$mobile-header-search-input-focus-shadow:             0 1px 5px rgba(#000, .2) !default;
+$mobile-header-search-input-focus-placeholder:        #999                     !default;
+$mobile-header-search-input-focus-font-color:         #333                     !default;
+$mobile-header-search-input-focus-icon-color:         #b3b3b3                  !default;
+$mobile-header-search-input-focus-icon-hover-color:   #333                     !default;
+
+
+// .product-card
+$product-card-hover-shadow:            0 0 0 2px #d9d9d9 inset !default;
+$product-card-quickview-default-bg:    #d9d9d9                 !default;
+$product-card-quickview-default-color: $accent-color           !default;
+
+
+// .nouislider
+$nouislider-border-color: $accent-color          !default;
+$nouislider-handle-color: $accent-opposite-color !default;
+
+
+// .btn
+$btn-primary-hover-bg-color:  lighten($accent-color, 10%) !default;
+$btn-primary-active-bg-color: $accent-color               !default;

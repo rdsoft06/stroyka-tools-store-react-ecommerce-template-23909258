@@ -1,0 +1,176 @@
+/*
+// .product--layout--columnar
+*/
+@import '../variables';
+@import '../functions';
+@import '../mixins/buttons';
+@import '../mixins/hacks';
+@import '../mixins/direction';
+
+
+.product--layout--columnar {
+    @media (min-width: breakpoint(lg-start)) {
+        $local-info-padding: 30px;
+
+        .product__content {
+            -ms-grid-columns: 380px auto  260px;
+            grid-template-columns: [gallery] 380px [info] auto [sidebar] 260px;
+            grid-template-rows: auto auto auto auto;
+            grid-column-gap: 0;
+        }
+        .product__gallery {
+            grid-row-start: 1;
+            grid-row-end: 4;
+            min-height: 0;
+
+            @include only-ie() {
+                @include direction {
+                    #{$margin-inline-end}: 0;
+                }
+            }
+        }
+        .product__info {
+            -ms-grid-row: 1;
+            -ms-grid-column: 2;
+            grid-row: 1;
+            grid-column: info;
+            padding: 0 $local-info-padding;
+            min-height: 0;
+        }
+        .product__sidebar {
+            -ms-grid-row: 1;
+            -ms-grid-row-span: 4;
+            -ms-grid-column: 3;
+            grid-column: sidebar;
+            grid-row-start: 1;
+            grid-row-end: 4;
+            min-height: 0;
+
+            padding-top: 10px;
+            padding-bottom: 20px;
+
+            @include direction {
+                #{$border-inline-start}: 2px solid $card-border-color;
+                #{$padding-inline-start}: 30px;
+            }
+        }
+        .product__footer {
+            -ms-grid-row: 2;
+            -ms-grid-column: 2;
+            grid-row: 2;
+            grid-column: info;
+            padding: 0 $local-info-padding;
+            min-height: 0;
+        }
+
+        .product__wishlist-compare {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+
+            @include direction {
+                #{$inset-inline-end}: 8px;
+            }
+
+            & > * + * {
+                margin-top: 2px;
+            }
+        }
+        .product__name {
+            font-size: 24px;
+            margin-bottom: 12px;
+
+            @include direction {
+                #{$padding-inline-end}: 16px;
+            }
+        }
+        .product__description {
+            margin: 10px 0 12px;
+            font-size: 15px;
+        }
+        .product__features {
+            display: block;
+        }
+        .product__meta {
+            margin: 12px 0 0;
+            padding: 0;
+            border-top: none;
+        }
+        .product__meta-availability {
+            display: none;
+        }
+        .product__footer {
+            flex-direction: column;
+        }
+        .product__share-links {
+            margin-top: 12px;
+            margin-bottom: 0;
+
+            @include direction {
+                #{$margin-inline-start}: 1px;
+                #{$margin-inline-end}: 0;
+            }
+        }
+        .product__prices {
+            margin-top: 20px;
+            margin-bottom: 24px;
+            line-height: 28px;
+        }
+        .product__new-price {
+            display: block;
+        }
+        .product__quantity {
+            width: 88px;
+        }
+        .product__actions {
+            flex-wrap: nowrap;
+        }
+        .product__actions-item--addtocart {
+            flex-grow: 1;
+
+            .btn {
+                width: 100%;
+
+                @include direction {
+                    #{$padding-inline-start}: .5rem;
+                    #{$padding-inline-end}: .5rem;
+                }
+            }
+        }
+        .product__actions-item--wishlist,
+        .product__actions-item--compare {
+            display: none;
+        }
+        .product__availability {
+            display: block;
+            font-size: 14px;
+        }
+    }
+    @media (min-width: breakpoint(lg-start)) and (max-width: breakpoint(lg-end)) {
+        .product__content {
+            -ms-grid-columns: 320px auto  200px;
+            grid-template-columns: [gallery] 320px [info] auto [sidebar] 200px;
+        }
+        .product__sidebar {
+            @include direction {
+                #{$padding-inline-start}: 24px;
+            }
+        }
+        .product__option {
+            margin-bottom: 12px;
+        }
+        .product__actions {
+            flex-wrap: wrap;
+            margin: 0;
+        }
+        .product__quantity {
+            width: 100px;
+        }
+        .product__actions-item {
+            margin: 0;
+        }
+        .product__actions-item--addtocart {
+            margin-top: 16px;
+        }
+    }
+}

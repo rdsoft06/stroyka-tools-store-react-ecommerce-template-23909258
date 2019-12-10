@@ -1,0 +1,93 @@
+/*
+// .addresses-list
+*/
+@import '../variables';
+@import '../functions';
+@import '../mixins/direction';
+
+
+@mixin local-layout($columns, $gutter) {
+    .addresses-list__item {
+        max-width: calc((100% - #{($columns - 1) * $gutter}) / #{$columns});
+    }
+    .addresses-list__divider:nth-child(2n) {
+        width: $gutter;
+    }
+    .addresses-list__divider:nth-child(#{$columns * 2}n) {
+        width: 100%;
+        height: $gutter;
+    }
+}
+
+
+.addresses-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+.addresses-list__item {
+    flex-basis: 0;
+    flex-grow: 1;
+}
+.addresses-list__item--new {
+    border-radius: $card-border-radius;
+    border: $card-border-width dashed #ebebeb;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+.addresses-list__divider:last-child {
+    display: none;
+}
+.addresses-list__plus {
+    width: 60px;
+    height: 60px;
+    border: 2px dashed #ebebeb;
+    position: relative;
+    border-radius: 30px;
+    margin-bottom: 24px;
+    transition: border-color .2s;
+
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        width: 32px;
+        height: 4px;
+        background-color: #e5e5e5;
+        border-radius: 1.5px;
+        top: calc(50% - 2px);
+        transition: background-color .2s;
+
+        @include direction {
+            #{$inset-inline-start}: calc(50% - 16px);
+        }
+    }
+
+    &::after {
+        transform: rotateZ(90deg);
+    }
+}
+.addresses-list__item--new:hover .addresses-list__plus {
+    border-color: #e0e0e0;
+
+    &::before,
+    &::after {
+        background-color: #dbdbdb;
+    }
+}
+
+
+@media (min-width: breakpoint(xl-start)) {
+    @include local-layout(3, 16px);
+}
+@media (min-width: breakpoint(md-start)) and (max-width: breakpoint(lg-end)) {
+    @include local-layout(3, 12px);
+}
+@media (min-width: 480px) and (max-width: breakpoint(sm-end)) {
+    @include local-layout(2, 12px);
+}
+@media (max-width: 479px) {
+    @include local-layout(1, 12px);
+}

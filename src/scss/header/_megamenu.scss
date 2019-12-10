@@ -1,0 +1,86 @@
+/*
+// .megamenu
+*/
+@import '../variables';
+@import '../functions';
+@import '../mixins/hacks';
+@import '../mixins/direction';
+
+
+.megamenu {
+    background: $megamenu-bg;
+    background-repeat: no-repeat;
+    color: $megamenu-font-color;
+    box-shadow: $megamenu-shadow;
+    min-height: 100%;
+    width: 100%;
+    padding: 26px 30px;
+    line-height: 1.5;
+    letter-spacing: .01em;
+
+    @include direction {
+        background-position: $inline-end bottom;
+    }
+
+    // without it IE renders a blurred menu
+    @include only-ie() {
+        box-shadow: 0 0 0 1px rgba(#000, .15);
+    }
+}
+.megamenu--departments {
+    @include direction {
+        #{$padding-inline-end}: 31px;
+    }
+
+    @media (min-width: breakpoint(lg-start)) and (max-width: breakpoint(lg-end)) {
+        @include direction {
+            #{$padding-inline-end}: 32px;
+        }
+    }
+}
+
+.megamenu__links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    a {
+        color: $megamenu-primary-link-color;
+        transition: color .15s;
+
+        &:hover {
+            color: $link-hover-color;
+        }
+    }
+}
+.megamenu__links--level--0 {
+    & > .megamenu__item + .megamenu__item--with-submenu,
+    & > .megamenu__item--with-submenu + .megamenu__item {
+        margin-top: 20px;
+    }
+
+    & > .megamenu__item {
+        padding: 1px 0;
+    }
+
+    & > .megamenu__item > a {
+        font-weight: $font-weight-medium;
+    }
+
+    & > .megamenu__item > a + .megamenu__links {
+        padding-top: 10px;
+        margin-top: 3px;
+        border-top: 1px solid $megamenu-divider-color;
+    }
+}
+.megamenu__links--level--1 {
+    & > .megamenu__item > a {
+        font-size: 14px;
+        color: $megamenu-secondary-link-color;
+        transition: color .15s;
+
+        &:hover {
+            color: $link-hover-color;
+        }
+    }
+}

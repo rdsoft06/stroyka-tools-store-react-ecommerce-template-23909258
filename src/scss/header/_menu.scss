@@ -1,0 +1,144 @@
+/*
+// .menu
+*/
+@import '../variables';
+@import '../mixins/hacks';
+@import '../mixins/direction';
+
+
+.menu {
+    color: $menu-font-color;
+    background: $menu-bg;
+    box-shadow: $menu-shadow;
+    list-style: none;
+
+    width: 190px;
+    padding: 10px 0;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: .02em;
+    font-weight: $font-weight-medium;
+
+    // without it IE renders a blurred menu
+    @include only-ie() {
+        box-shadow: 0 0 0 1px rgba(#000, .15);
+    }
+
+    > li {
+        position: relative;
+    }
+
+    > li > a,
+    > li > button {
+        background: transparent;
+        border: none;
+        width: 100%;
+        font-weight: inherit;
+        display: block;
+        padding-top: 8px;
+        padding-bottom: 6px;
+        color: inherit;
+
+        @include direction {
+            text-align: $inline-start;
+            #{$padding-inline-end}: 24px;
+            #{$padding-inline-start}: 16px;
+        }
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    > li:hover > a,
+    > li:hover > button {
+        background: $menu-item-hover-bg;
+    }
+
+    > li:hover .menu__submenu {
+        opacity: 1;
+        visibility: visible;
+        transform: rotateY(0deg);
+    }
+}
+.menu__icon {
+    position: absolute;
+    top: 3px;
+
+    @include direction {
+        #{$inset-inline-start}: 15px;
+    }
+}
+.menu__arrow {
+    position: absolute;
+    top: calc(50% - 5px);
+    fill: $menu-item-arrow-color;
+
+    @include direction {
+        #{$inset-inline-end}: 12px;
+        transform: scaleX(1 * $transform-direction);
+    }
+}
+.menu__submenu {
+    top: -10px;
+    position: absolute;
+    visibility: hidden;
+    transform: rotateY(45deg);
+    opacity: 0;
+    transition: transform .2s, opacity .2s;
+
+    @include direction {
+        #{$inset-inline-start}: 100%;
+        transform-origin: #{$inline-start};
+    }
+}
+.menu--with-icons {
+    > li > a,
+    > li > button {
+        @include direction {
+            #{$padding-inline-start}: 16px + 24px + 10px;
+        }
+    }
+}
+
+
+.menu--layout--topbar {
+    padding: 6px 0;
+    width: 152px;
+    box-shadow: $menu-topbar-shadow;
+
+    // without it IE renders a blurred menu
+    @include only-ie() {
+        box-shadow: 0 0 0 1px rgba(#000, .15);
+    }
+
+    > li > a,
+    > li > button {
+        display: block;
+        padding-top: 8px;
+        padding-bottom: 6px;
+        color: inherit;
+
+        @include direction {
+            #{$padding-inline-end}: 21px;
+            #{$padding-inline-start}: 13px;
+        }
+    }
+
+    &.menu--with-icons {
+        .menu__icon {
+            position: absolute;
+            top: 3px;
+
+            @include direction {
+                #{$inset-inline-start}: 12px;
+            }
+        }
+        > li > a,
+        > li > button {
+            @include direction {
+                #{$padding-inline-start}: 13px + 24px + 8px;
+            }
+        }
+    }
+}

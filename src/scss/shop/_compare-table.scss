@@ -1,0 +1,105 @@
+/*
+// .compare-table
+*/
+@import '../variables';
+@import '../mixins/direction';
+
+
+.compare-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 15px;
+    line-height: 18px;
+
+    tr > * {
+        border-top: 1px solid $table-border-color;
+
+        @include direction {
+            #{$border-inline-start}: 1px solid $table-border-color;
+        }
+
+        &:last-child {
+            @include direction {
+                #{$border-inline-end}: 1px solid $table-border-color;
+            }
+        }
+    }
+    & > *:first-child > tr:first-child {
+        & > *:first-child {
+            @include direction {
+                #{$border-start-start-radius}: $table-border-radius;
+            }
+        }
+        & > *:last-child {
+            @include direction {
+                #{$border-start-end-radius}: $table-border-radius;
+            }
+        }
+    }
+    & > *:last-child > tr:last-child {
+        & > *:first-child {
+            @include direction {
+                #{$border-end-start-radius}: $table-border-radius;
+            }
+        }
+        & > *:last-child {
+            @include direction {
+                #{$border-end-end-radius}: $table-border-radius;
+            }
+        }
+        & > * {
+            border-bottom: 1px solid $table-border-color;
+        }
+    }
+    th {
+        min-width: 140px;
+        background: $table-th-bg;
+        font-weight: $font-weight-medium;
+
+        @include direction {
+            text-align: $inline-end;
+        }
+    }
+    td {
+        min-width: 180px;
+        max-width: 180px;
+        text-align: center;
+        vertical-align: top;
+    }
+
+    td, th {
+        padding: 14px 16px;
+    }
+}
+.compare-table__product-link {
+    display: block;
+    padding: 8px 8px 0;
+    color: inherit;
+}
+.compare-table__product-image {
+    margin-bottom: 14px;
+    width: 100%;
+
+    img {
+        width: 140px;
+        max-width: 100%;
+    }
+}
+.compare-table__product-name {
+    line-height: 20px;
+}
+.compare-table__product-rating {
+    padding-top: 3px;
+    display: flex;
+    justify-content: center;
+}
+.compare-table__product-rating-legend {
+    margin-top: 8px;
+    font-size: 13px;
+    line-height: 1;
+    color: $rating-legend-font-color;
+}
+.compare-table__product-badge {
+    font-size: 12px;
+}

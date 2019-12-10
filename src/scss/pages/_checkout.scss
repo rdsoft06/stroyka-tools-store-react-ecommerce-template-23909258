@@ -1,0 +1,138 @@
+/*
+// .checkout
+*/
+@import '../variables';
+@import '../mixins/direction';
+
+
+.checkout {}
+.checkout__totals {
+    font-size: 15px;
+    line-height: 19px;
+    width: 100%;
+    margin-bottom: 40px;
+
+    th, td {
+        padding: 4px 0;
+    }
+
+    th {
+        font-weight: $font-weight-bold;
+    }
+
+    tr > :first-child {
+        @include direction {
+            #{$padding-inline-end}: 20px;
+        }
+    }
+
+    tr > :last-child {
+        @include direction {
+            text-align: $inline-end;
+        }
+    }
+}
+.checkout__totals-header {
+    tr:last-child > * {
+        padding-bottom: 10px;
+    }
+}
+.checkout__totals-products {
+    tr:first-child > * {
+        padding-top: 20px;
+        border-top: 1px solid $card-divider-color;
+    }
+    tr:last-child > * {
+        padding-bottom: 20px;
+        border-bottom: 1px solid $card-divider-color;
+    }
+}
+.checkout__totals-subtotals {
+    tr:first-child > * {
+        padding-top: 20px;
+    }
+    tr:last-child > * {
+        padding-bottom: 20px;
+        border-bottom: 1px solid $card-divider-color;
+    }
+}
+.checkout__totals-footer {
+    font-size: 24px;
+
+    th {
+        font-weight: $font-weight-medium;
+    }
+
+    tr:first-child > * {
+        padding-top: 20px;
+    }
+}
+
+
+
+
+.payment-methods {
+    margin-bottom: 30px;
+}
+.payment-methods__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.payment-methods__item {
+    border-radius: $payment-methods-border-radius;
+    background: $payment-methods-default-bg;
+    border: $payment-methods-default-border;
+
+    &:hover {
+        background: $payment-methods-hover-bg;
+        border: $payment-methods-hover-border;
+    }
+
+    & + & {
+        margin-top: 6px;
+    }
+}
+.payment-methods__item-header {
+    display: flex;
+    align-items: center;
+    padding: 8px 14px;
+    font-size: 15px;
+    font-weight: $font-weight-medium;
+    letter-spacing: .01em;
+    cursor: pointer;
+    margin-bottom: 0;
+}
+.payment-methods__item-radio {
+    @include direction {
+        #{$margin-inline-end}: 10px;
+    }
+}
+.payment-methods__item-container {
+    overflow: hidden;
+    height: 0;
+    transition: height .2s;
+}
+.payment-methods__item-description {
+    font-size: 15px;
+    line-height: 20px;
+    padding: 2px 16px 13px 16px;
+}
+.payment-methods__item--active {
+    &, &:hover {
+        background: $payment-methods-active-bg;
+        border: $payment-methods-active-border;
+    }
+
+    .payment-methods__item-container {
+        height: auto;
+    }
+}
+
+.checkout__agree {
+    margin-bottom: 36px;
+
+    a:hover {
+        text-decoration: underline;
+    }
+}

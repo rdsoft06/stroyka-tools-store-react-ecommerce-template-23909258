@@ -1,0 +1,125 @@
+/*
+// .product__tabs
+*/
+@import '../variables';
+@import '../functions';
+@import '../mixins/direction';
+
+
+.product-tabs {
+    margin-top: 36px;
+}
+.product-tabs__list {
+    display: flex;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: -$product-tabs-border-width;
+
+    &::after,
+    &::before {
+        content: '';
+        display: block;
+        width: 8px;
+        flex-shrink: 0;
+    }
+}
+.product-tabs__item {
+    font-size: 20px;
+    padding: 18px 48px;
+    background: none;
+    border: none;
+    border-bottom: $product-tabs-border-width solid transparent;
+    color: inherit;
+    font-weight: $font-weight-medium;
+    border-radius: 3px 3px 0 0;
+    transition: all .15s;
+
+    &:focus {
+        outline: none;
+    }
+    &:hover {
+        color: inherit;
+        background: $product-tabs-hover-bg;
+        border-bottom-color: $product-tabs-hover-border-color;
+    }
+
+    &:first-child {
+        @include direction {
+            #{$margin-inline-start}: auto;
+        }
+    }
+    &:last-child {
+        @include direction {
+            #{$margin-inline-end}: auto;
+        }
+    }
+}
+.product-tabs__item--active {
+    transition-duration: 0s;
+
+    &,
+    &:hover {
+        cursor: default;
+        border-bottom-color: $product-tabs-active-border-color;
+        background: transparent;
+    }
+}
+.product-tabs__content {
+    border: $product-tabs-border;
+    border-radius: $product-tabs-border-radius;
+    padding: 80px 90px;
+}
+.product-tabs__pane {
+    overflow: hidden;
+    height: 0;
+    opacity: 0;
+    transition: opacity .5s;
+}
+.product-tabs__pane--active {
+    overflow: visible;
+    height: auto;
+    opacity: 1;
+}
+
+
+
+.product-tabs--layout--sidebar {
+    .product-tabs__item {
+        padding: 14px 30px;
+    }
+    .product-tabs__content {
+        padding: 48px 50px;
+    }
+}
+
+
+
+
+
+@media (min-width: breakpoint(lg-start)) and (max-width: breakpoint(lg-end)) {
+    .product-tabs__content {
+        padding: 60px 70px;
+    }
+}
+@media (min-width: breakpoint(md-start)) and (max-width: breakpoint(md-end)) {
+    .product-tabs {
+        margin-top: 40px;
+    }
+    .product-tabs .product-tabs__item {
+        padding: 14px 30px;
+    }
+    .product-tabs .product-tabs__content {
+        padding: 40px 50px;
+    }
+}
+@media (max-width: breakpoint(sm-end)) {
+    .product-tabs {
+        margin-top: 30px;
+    }
+    .product-tabs .product-tabs__item {
+        padding: 10px 22px;
+    }
+    .product-tabs .product-tabs__content {
+        padding: 24px;
+    }
+}
