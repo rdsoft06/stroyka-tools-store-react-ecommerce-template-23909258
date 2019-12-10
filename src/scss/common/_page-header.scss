@@ -1,0 +1,45 @@
+/*
+// .page-header
+*/
+@import '../variables';
+@import '../functions';
+
+
+.page-header {}
+.page-header__container {
+    padding-bottom: 32px;
+}
+.page-header__breadcrumb {
+    padding-top: 16px;
+}
+.page-header__title {
+    padding-top: 6px;
+
+    h1 {
+        margin-bottom: 0;
+    }
+}
+
+
+@media (min-width: breakpoint(md-start)) and (max-width: breakpoint(md-end)) {
+    .page-header__title {
+        padding-top: 4px;
+
+        h1 {
+            margin-bottom: 0;
+        }
+    }
+}
+@media (max-width: breakpoint(sm-end)) {
+    .page-header__container {
+        padding-bottom: 24px;
+    }
+    .page-header__title {
+        padding-top: 2px;
+
+        h1 {
+            margin-bottom: 0;
+            font-size: 30px;
+        }
+    }
+}

@@ -1,0 +1,70 @@
+/*
+// .block-map
+*/
+@import '../variables';
+@import '../functions';
+
+
+.block-map {
+    margin-bottom: 10px;
+}
+.block-map__body {
+    height: 540px;
+    position: relative;
+
+    &::before {
+        position: absolute;
+        content: '';
+        display: block;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        z-index: 1;
+        background: $block-map-top-bg;
+        pointer-events: none;
+    }
+
+    &::after {
+        position: absolute;
+        content: '';
+        display: block;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        z-index: 1;
+        background-image: $block-map-bottom-bg;
+        pointer-events: none;
+    }
+
+    iframe {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+
+@media (max-width: breakpoint(lg-end)) {
+    .block-map__body {
+        height: 500px;
+    }
+}
+@media (max-width: breakpoint(md-end)) {
+    .block-map__body {
+        height: 440px;
+    }
+}
+@media (max-width: breakpoint(sm-end)) {
+    .block-map__body {
+        height: 380px;
+    }
+}
+@media (max-width: breakpoint(xs-end)) {
+    .block-map__body {
+        height: 300px;
+    }
+}

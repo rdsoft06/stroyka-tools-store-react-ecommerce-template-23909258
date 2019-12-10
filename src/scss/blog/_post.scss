@@ -1,0 +1,126 @@
+/*
+// .post
+*/
+@import '../variables';
+@import '../functions';
+@import '../mixins/card';
+@import '../mixins/direction';
+
+
+.post {}
+.post__featured {
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-radius: 2px;
+    margin-bottom: 40px;
+
+    img {
+        transition: opacity .2s;
+        max-width: 100%;
+    }
+    &:hover img {
+        opacity: .8;
+    }
+}
+.post__footer {
+    margin-top: 60px;
+}
+.post__tags-share-links {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+.post__tags {
+    @include direction {
+        #{$margin-inline-end}: 30px;
+    }
+}
+.post__share-links {
+    padding-top: 2px;
+}
+.post__section {
+    margin-top: 70px;
+}
+.post__section-title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 28px;
+    font-size: 22px;
+
+    &::after {
+        margin-top: 1px;
+        content: '';
+        display: block;
+        height: 2px;
+        flex-grow: 1;
+        background: $post-section-divider-color;
+
+        @include direction {
+            #{$margin-inline-start}: 16px;
+        }
+    }
+}
+
+
+@media (max-width: breakpoint(lg-end)) {
+    .post__section {
+        margin-top: 50px;
+    }
+}
+@media (min-width: breakpoint(md-start)) and (max-width: breakpoint(md-end)) {
+    .post__featured {
+        margin-bottom: 30px;
+    }
+}
+@media (max-width: breakpoint(sm-end)) {
+    .post__featured {
+        margin-bottom: 24px;
+    }
+    .post__footer {
+        margin-top: 40px;
+    }
+    .post__tags-share-links {
+        flex-direction: column;
+        align-items: center;
+    }
+    .post__tags {
+        @include direction {
+            #{$margin-inline-end}: 0;
+        }
+
+        .tags__list {
+            justify-content: center;
+        }
+    }
+    .post__share-links {
+        padding: 20px 0 0;
+    }
+}
+
+
+.post--layout--full {
+    @media (min-width: breakpoint(lg-start)) {
+        .post__featured {
+            margin-bottom: 50px;
+        }
+    }
+    @media (min-width: breakpoint(xl-start)) {
+        .post__featured {
+            width: calc(100% + 380px);
+
+            @include direction {
+                #{$inset-inline-start}: -190px;
+            }
+        }
+    }
+    @media (min-width: breakpoint(lg-start)) and (max-width: breakpoint(lg-end)) {
+        .post__featured {
+            width: calc(100% + 240px);
+
+            @include direction {
+                #{$inset-inline-start}: -120px;
+            }
+        }
+    }
+}

@@ -1,0 +1,66 @@
+/*
+// .post-author
+*/
+@import '../variables';
+@import '../functions';
+@import '../mixins/card';
+@import '../mixins/direction';
+
+
+.post-author {
+    @include card();
+    padding: 22px;
+    display: flex;
+}
+.post-author__avatar {
+    width: 70px;
+    flex-shrink: 0;
+    overflow: hidden;
+    border-radius: 2px;
+
+    @include direction {
+        #{$margin-inline-end}: 18px;
+    }
+
+    img {
+        max-width: 100%;
+    }
+}
+.post-author__name {
+    margin-top: 1px;
+    font-size: 15px;
+    font-weight: $font-weight-medium;
+
+    a {
+        color: inherit;
+    }
+}
+.post-author__about {
+    margin-top: 4px;
+    font-size: 14px;
+}
+.post__related-posts {
+    margin-top: 50px;
+}
+
+
+@media (max-width: breakpoint(xs-end)) {
+    .post-author {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .post-author__avatar {
+        width: 90px;
+
+        @include direction {
+            #{$margin-inline-end}: 0;
+        }
+    }
+    .post-author__info {
+        margin-top: 16px;
+    }
+    .post-author__about {
+        margin-top: 8px;
+    }
+}

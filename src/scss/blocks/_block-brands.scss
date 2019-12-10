@@ -1,0 +1,27 @@
+/*
+// .block-brands
+*/
+@import '../variables';
+@import '../functions';
+@import '../mixins/card';
+
+
+.block-brands {}
+.block-brands__slider {
+    @include card();
+}
+.block-brands__item {
+    padding: 24px 24px;
+    vertical-align: middle;
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+@media (max-width: breakpoint(sm-end)) {
+    .block-brands__item {
+        padding: 20px 24px;
+    }
+}

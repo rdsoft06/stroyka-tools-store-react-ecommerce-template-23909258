@@ -1,0 +1,49 @@
+/*
+// .comments-list
+*/
+@import '../variables';
+@import '../functions';
+@import '../mixins/direction';
+
+
+.comments-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.comments-list__item {
+    & + & {
+        border-top: 1px solid $body-divider-color;
+        margin-top: 24px;
+        padding-top: 28px;
+    }
+}
+.comments-list--level--0 {
+    & > .comments-list__item:last-child {
+        padding-bottom: 28px;
+        border-bottom: 1px solid $body-divider-color;
+    }
+}
+.comments-list--level--1 {
+    border-top: 1px solid $body-divider-color;
+    margin-top: 24px;
+    padding-top: 28px;
+
+    & > .comments-list__item {
+        @include direction {
+            #{$margin-inline-start}: 46px;
+        }
+    }
+}
+
+
+@media (max-width: breakpoint(sm-end)) {
+    .comments-list__item + .comments-list__item {
+        margin-top: 20px;
+        padding-top: 24px;
+    }
+    .comments-list--level--1 {
+        margin-top: 20px;
+        padding-top: 24px;
+    }
+}

@@ -1,0 +1,17 @@
+/*
+// .block-features
+*/
+@import '../variables';
+
+
+.block-empty {}
+.block-empty__body {
+    text-align: center;
+    padding: 18px 0 60px;
+}
+.block-empty__message {
+    font-size: 17px;
+}
+.block-empty__actions {
+    margin-top: 24px;
+}

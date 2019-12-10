@@ -1,0 +1,104 @@
+/*
+// .block-products-carousel
+*/
+@import '../variables';
+@import '../functions';
+@import '../mixins/product-card';
+@import '../mixins/preloader';
+
+
+.block-products-carousel {
+    .slick-track {
+        padding-bottom: 56px;
+    }
+    .slick-list {
+        margin: 0 -5px;
+        margin-bottom: -56px;
+
+        &:hover {
+            z-index: 2;
+        }
+    }
+    .slick-slide {
+        padding: 0 5px;
+    }
+}
+.block-products-carousel__slider {
+    position: relative;
+}
+.block-products-carousel__preloader {
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 56px;
+    background: $block-products-carousel-preloader-bg;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .3s, visibility 0s .3s;
+
+    &:after {
+        @include preloader(100px);
+    }
+}
+.block-products-carousel--loading .block-products-carousel__preloader {
+    transition-delay: 0s, 0s;
+    opacity: 1;
+    visibility: visible;
+}
+.block-products-carousel__column {}
+.block-products-carousel__cell {
+    & + & {
+        margin-top: 10px;
+    }
+}
+
+
+.block-products-carousel[data-layout^="grid-"] {
+    .product-card {
+        @include product-card-grid();
+    }
+}
+.block-products-carousel[data-layout="grid-4"] {
+    .product-card {
+        @include product-card-grid-nl();
+    }
+
+    @media (min-width: 480px) and (max-width: breakpoint(lg-end)) {
+        .product-card {
+            @include product-card-grid-sm();
+        }
+    }
+}
+.block-products-carousel[data-layout="grid-4-sm"] {
+    @media (min-width: 480px) {
+        .product-card {
+            @include product-card-grid-sm();
+        }
+    }
+    @media (max-width: 479px) {
+        .product-card {
+            @include product-card-grid-nl();
+        }
+    }
+}
+.block-products-carousel[data-layout="grid-5"] {
+    @media (min-width: 480px) {
+        .product-card {
+            @include product-card-grid-sm();
+        }
+    }
+    @media (max-width: 479px) {
+        .product-card {
+            @include product-card-grid-nl();
+        }
+    }
+}
+
+
+.block-products-carousel[data-layout="horizontal"] {
+    .product-card {
+        @include product-card-horizontal();
+    }
+}

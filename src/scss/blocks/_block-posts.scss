@@ -1,0 +1,43 @@
+/*
+// .block-posts
+*/
+@import '../variables';
+@import '../functions';
+@import '../mixins/post-card';
+
+.block-posts {
+    position: relative;
+    z-index: 1;
+
+    .slick-list {
+        margin: 0 -15px;
+    }
+    .slick-slide {
+        padding: 0 15px;
+    }
+}
+.block-posts--layout--list-sm {
+    @media (min-width: breakpoint(sm-start)) {
+        .post-card {
+            @include post-card-list();
+            @include post-card-list-sm();
+        }
+    }
+    @media (min-width: breakpoint(lg-start)) and (max-width: breakpoint(lg-end)) {
+        .post-card {
+            @include post-card-list-xs();
+        }
+    }
+    @media (max-width: breakpoint(xs-end)) {
+        .post-card {
+            @include post-card-grid();
+        }
+    }
+}
+
+
+.block-posts--layout--grid-nl {
+    .post-card {
+        @include post-card-grid();
+    }
+}

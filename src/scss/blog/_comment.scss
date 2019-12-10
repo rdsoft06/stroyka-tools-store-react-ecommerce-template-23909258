@@ -1,0 +1,74 @@
+/*
+// .comment
+*/
+@import '../variables';
+@import '../functions';
+@import '../mixins/direction';
+
+
+.comment {
+    display: flex;
+}
+.comment__avatar {
+    width: 70px;
+    flex-shrink: 0;
+
+    @include direction {
+        #{$margin-inline-start}: 20px;
+        #{$margin-inline-end}: 24px;
+    }
+
+    img {
+        max-width: 100%;
+        border-radius: 222px;
+    }
+}
+.comment__content {
+    flex-grow: 1;
+}
+.comment__header {
+    margin-top: -4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.comment__author {
+    font-size: 16px;
+    font-weight: $font-weight-medium;
+
+    a {
+        color: inherit;
+        transition: color .2s;
+    }
+    a:hover {
+        color: $link-hover-color;
+    }
+}
+.comment__reply .btn {
+    height: 22px;
+    padding: .125rem .375rem;
+    display: block;
+}
+.comment__text {
+    font-size: 16px;
+    margin-top: 6px;
+}
+.comment__date {
+    margin-top: 10px;
+    color: $body-font-muted-color;
+    font-size: 14px;
+}
+
+
+@media (max-width: breakpoint(sm-end)) {
+    .comment__avatar {
+        @include direction {
+            #{$margin-inline-start}: 0;
+        }
+    }
+}
+@media (max-width: breakpoint(xs-end)) and (max-width: breakpoint(xs-end)) {
+    .comment__avatar {
+        display: none;
+    }
+}

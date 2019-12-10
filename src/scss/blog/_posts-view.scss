@@ -1,0 +1,18 @@
+/*
+// .posts-view
+*/
+@import '../variables';
+@import '../functions';
+
+
+.posts-view {}
+.posts-view__pagination {
+    padding-top: 38px;
+}
+
+@media (max-width: breakpoint(md-end)) {
+    .posts-view__pagination {
+        padding-top: 28px;
+        padding-bottom: 10px;
+    }
+}

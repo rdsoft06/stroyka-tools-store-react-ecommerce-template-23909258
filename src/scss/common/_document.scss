@@ -1,0 +1,66 @@
+/*
+// .document
+*/
+@import '../variables';
+@import '../functions';
+@import '../mixins/card';
+@import '../mixins/direction';
+
+
+.document {
+    @include card();
+    padding: 85px 200px 120px;
+}
+.document__header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+.document__subtitle {
+    margin-top: 12px;
+    font-size: 14px;
+    line-height: 22px;
+    color: $body-font-muted-color;
+}
+
+
+@media (max-width: breakpoint(lg-end)) {
+    .document {
+        padding: 75px 110px 110px;
+    }
+    .document__header {
+        margin-bottom: 60px;
+    }
+}
+@media (max-width: breakpoint(md-end)) {
+    .document {
+        padding: 45px 35px 60px;
+    }
+    .document__header {
+        margin-bottom: 40px;
+    }
+}
+@media (max-width: breakpoint(sm-end)) {
+    .document {
+        padding: 35px 30px 50px;
+    }
+    .document__header {
+        margin-bottom: 30px;
+    }
+    .document__title {
+        font-size: 30px;
+        margin-bottom: 0;
+    }
+    .document__subtitle {
+        margin-top: 6px;
+    }
+}
+@media (max-width: breakpoint(xs-end)) {
+    .document {
+        padding: 26px 20px 40px;
+    }
+    .document__header {
+        @include direction {
+            text-align: $inline-start;
+        }
+    }
+}

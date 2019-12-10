@@ -1,0 +1,161 @@
+/*
+// .block-sidebar
+*/
+@import '../variables';
+@import '../functions';
+@import '../mixins/direction';
+
+
+$local-transition-duration: .3s;
+
+
+@mixin local-offcanvas() {
+    visibility: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    transition: visibility 0s $local-transition-duration;
+
+    @include direction {
+        #{$inset-inline-start}: 0;
+    }
+
+    .block-sidebar__backdrop {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: $mobilemenu-backdrop-bg;
+        opacity: 0;
+        transition: opacity $local-transition-duration;
+
+        @include direction {
+            #{$inset-inline-start}: 0;
+        }
+    }
+    .block-sidebar__body {
+        position: absolute;
+        top: 0;
+        width: 290px;
+        height: 100%;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        background: $mobilemenu-bg;
+        box-shadow: $mobilemenu-shadow;
+        transition: transform $local-transition-duration;
+        display: flex;
+        flex-direction: column;
+
+        @include direction {
+            #{$inset-inline-start}: 0;
+            transform: translateX(#{-100% * $transform-direction}) translateX(#{-30px * $transform-direction});
+        }
+    }
+    .block-sidebar__header {
+        display: flex;
+    }
+
+    &.block-sidebar--open {
+        visibility: visible;
+        transition-delay: 0s;
+
+        .block-sidebar__backdrop {
+            opacity: .9;
+        }
+
+        .block-sidebar__body {
+            transform: translateX(0);
+        }
+    }
+}
+
+
+.block-sidebar {}
+.block-sidebar__item + .block-sidebar__item {
+    margin-top: 30px;
+}
+.block-sidebar--position--start {
+    @include direction {
+        #{$padding-inline-end}: 20px;
+    }
+
+    @media (max-width: breakpoint(lg-end)) {
+        @include direction {
+            #{$padding-inline-end}: 6px;
+        }
+    }
+    @media (max-width: breakpoint(md-end)) {
+        @include direction {
+            #{$padding-inline-end}: 0;
+        }
+    }
+}
+.block-sidebar--position--end {
+    @include direction {
+        #{$padding-inline-start}: 20px;
+    }
+
+    @media (max-width: breakpoint(lg-end)) {
+        @include direction {
+            #{$padding-inline-start}: 6px;
+        }
+    }
+    @media (max-width: breakpoint(md-end)) {
+        @include direction {
+            #{$padding-inline-start}: 0;
+        }
+    }
+}
+
+
+.block-sidebar__header {
+    height: $mobilemenu-header-height + 1px;
+    flex-shrink: 0;
+    align-items: center;
+    border-bottom: 1px solid $mobilemenu-divider-color;
+    display: none;
+}
+.block-sidebar__title {
+    padding: 0 20px;
+    font-weight: $font-weight-bold;
+    flex-grow: 1;
+}
+.block-sidebar__close {
+    border: none;
+    background: transparent;
+    height: $mobilemenu-header-height;
+    width: $mobilemenu-header-height + 1px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    fill: $mobilemenu-close-button-default-color;
+    transition: fill .2s;
+
+    @include direction {
+        #{$border-inline-start}: 1px solid $mobilemenu-divider-color;
+    }
+
+    &:focus {
+        outline: none;
+    }
+    &:focus,
+    &:hover {
+        fill: $mobilemenu-close-button-hover-color;
+    }
+}
+
+
+.block-sidebar--offcanvas--always {
+    @include local-offcanvas;
+}
+
+
+.block-sidebar--offcanvas--mobile {
+    @media (max-width: breakpoint(md-end)) {
+        @include local-offcanvas;
+    }
+}
